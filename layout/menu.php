@@ -28,29 +28,30 @@ if ($_SESSION['status'] == 'login') {
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'master' ? 'active' : '' ?>" href="?page=master">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Master</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenReturn' ? 'active' : '' ?>" href="?page=oksigenReturn">
                     <i class="fas fa-fw fa-truck"></i>
-                    <span>Tabung Return</span>
+                    <span>Verifikasi Usulan</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenMasuk' ? 'active' : '' ?>" href="?page=oksigenMasuk">
                     <i class="fas fa-fw fa-level-down-alt"></i>
-                    <span>Tabung Masuk</span>
+                    <span>Penetapan Rencana</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
                     <i class="fas fa-fw fa-level-up-alt"></i>
-                    <span>Tabung Keluar</span>
+                    <span>Pengaduan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link <?= $_GET['page'] == 'master' ? 'active' : '' ?>" href="?page=master">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Master Data</span>
                 </a>
             </li>
 
@@ -78,12 +79,6 @@ if ($_SESSION['status'] == 'login') {
                     <i class="fas fa-fw fa-user"></i>
                     <span>User</span></a>
             </li>
-
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
         <?php
         }
         ?>
@@ -97,7 +92,13 @@ if ($_SESSION['status'] == 'login') {
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
                     <i class="fas fa-fw fa-level-up-alt"></i>
-                    <span>Tabung Keluar</span>
+                    <span>Usulan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
+                    <i class="fas fa-fw fa-level-up-alt"></i>
+                    <span>Pengaduan</span>
                 </a>
             </li>
         <?php } ?>
@@ -127,6 +128,25 @@ if ($_SESSION['status'] == 'login') {
                 </div>
             </li>
         <?php } ?>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Logout -->
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-fw"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
     </ul>
 <?php
 }
