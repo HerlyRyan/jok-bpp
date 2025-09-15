@@ -56,24 +56,54 @@
                                 include 'dashboard.php';
                                 break;
 
-                            // Master Oksigen
-                            case "master";
-                                $title = 'Data Master';
+                            // Master Data
+                            case "master";;
                                 include '../../master/show.php';
                                 break;
 
-                            case "masterAdd";
-                                $title = 'Tambah Master';
-                                include '../../master/add.php';
+                            // Bidang master
+                            case "bidangAdd";
+                                $title = 'Tambah Data Bidang';
+                                include '../../master/bidang/add.php';
                                 break;
 
-                            case "masterDelete";
-                                include '../../master/delete.php';
+                            case "bidangEdit";
+                                $title = 'Edit Data Bidang';
+                                include '../../master/bidang/edit.php';
                                 break;
 
-                            case "masterEdit";
-                                $title = 'Edit Master';
-                                include '../../master/edit.php';
+                            case "bidangDelete";
+                                include '../../master/bidang/delete.php';
+                                break;
+
+                            // Program master
+                            case "programAdd";
+                                $title = 'Tambah Data Program';
+                                include '../../master/program/add.php';
+                                break;
+
+                            case "programEdit";
+                                $title = 'Edit Data program';
+                                include '../../master/program/edit.php';
+                                break;
+
+                            case "programDelete";
+                                include '../../master/program/delete.php';
+                                break;
+
+                            // Srogram master
+                            case "satuanAdd";
+                                $title = 'Tambah Data Satuan';
+                                include '../../master/satuan/add.php';
+                                break;
+
+                            case "satuanEdit";
+                                $title = 'Edit Data satuan';
+                                include '../../master/satuan/edit.php';
+                                break;
+
+                            case "satuanDelete";
+                                include '../../master/satuan/delete.php';
                                 break;
 
                             //  oksigen return

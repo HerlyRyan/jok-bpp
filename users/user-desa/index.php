@@ -86,6 +86,9 @@
     </div>
 
     <?php include_once '../../layout/js.php' ?>
+    <?php
+    sweetConfirm()
+    ?>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
         <div class="card shadow mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Data Bidang</h6>
-                <a href="?page=masterAdd" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                <a href="?page=bidangAdd" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
             </div>
             <div class="card-body">
 
@@ -32,9 +32,9 @@
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $data['nama_bidang']; ?></td>
                                         <td>
-                                            <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=masterEdit&id=<?php echo $data['id']; ?>"><i class="fa fa-pen"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=bidangEdit&id=<?php echo $data['bidang_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger" href="?page=masterDelete&id=<?php echo $data['id']; ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=bidangDelete&id=<?php echo $data['bidang_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                         </td>
                                     </tr>
@@ -54,7 +54,7 @@
         <div class="card shadow mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Data Program</h6>
-                <a href="?page=masterAdd" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                <a href="?page=programAdd" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
             </div>
             <div class="card-body">
 
@@ -65,6 +65,7 @@
                                 <tr class="text-center">
                                     <th>No</th>
                                     <th>Nama Program</th>
+                                    <th>Deskripsi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -72,7 +73,7 @@
                             <tbody>
 
                                 <?php
-                                $result = mysqli_query($con, "SELECT * FROM bidang");
+                                $result = mysqli_query($con, "SELECT * FROM program");
 
                                 $no = 1;
                                 while ($data = mysqli_fetch_array($result)) {
@@ -80,11 +81,12 @@
 
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $data['nama_bidang']; ?></td>
+                                        <td><?php echo $data['nama_program']; ?></td>
+                                        <td><?php echo $data['deskripsi']; ?></td>
                                         <td>
-                                            <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=masterEdit&id=<?php echo $data['id']; ?>"><i class="fa fa-pen"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=programEdit&id=<?php echo $data['program_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger" href="?page=masterDelete&id=<?php echo $data['id']; ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=programDelete&id=<?php echo $data['program_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                         </td>
                                     </tr>
@@ -104,7 +106,7 @@
         <div class="card shadow mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Data Satuan</h6>
-                <a href="?page=masterAdd" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                <a href="?page=satuanAdd" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
             </div>
             <div class="card-body">
 
@@ -122,7 +124,7 @@
                             <tbody>
 
                                 <?php
-                                $result = mysqli_query($con, "SELECT * FROM bidang");
+                                $result = mysqli_query($con, "SELECT * FROM satuan");
 
                                 $no = 1;
                                 while ($data = mysqli_fetch_array($result)) {
@@ -130,11 +132,11 @@
 
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $data['nama_bidang']; ?></td>
+                                        <td><?php echo $data['nama_satuan']; ?></td>
                                         <td>
-                                            <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=masterEdit&id=<?php echo $data['id']; ?>"><i class="fa fa-pen"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=satuanEdit&id=<?php echo $data['satuan_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger" href="?page=masterDelete&id=<?php echo $data['id']; ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=satuanDelete&id=<?php echo $data['satuan_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                         </td>
                                     </tr>

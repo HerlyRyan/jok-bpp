@@ -1,22 +1,18 @@
 <?php
-$id = $_GET['id'];
-$result = mysqli_query($con, "SELECT * FROM tb_oxygen_data WHERE id=$id");
-while ($data = mysqli_fetch_array($result)) {
-    $idOksigen = $data['id_oxygen'];
-    $name = $data['name'];
-}
-
-
-
 if (isset($_POST['submit'])) {
-    $idOksigen 		= $_POST['idOksigen'];
-    $name       	= $_POST['name'];
-    $result = mysqli_query($con, "UPDATE tb_oxygen_data SET id_oxygen='$idOksigen', name='$name' WHERE id=$id");
-    echo "<script>window.location.href ='?page=master';</script>";
+    $nama_program = $_POST['nama_program'];
+    $deskripsi = $_POST['deskripsi'];
+
+    $result = mysqli_query($con, "INSERT INTO program (nama_program, deskripsi) VALUES('$nama_program', '$deskripsi')");
+    if ($result) {
+        sweetAlert("success", "Data berhasil disimpan", "?page=master");
+    } else {
+        sweetAlert("error", "Data gagal disimpan", "?page=master");
+    }
 }
 ?>
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-10">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -25,17 +21,19 @@ if (isset($_POST['submit'])) {
             <div class="card-body">
                 <form action="" method="post">
                     <div class="mb-3 row">
-                        <label for="idOksigen" class="col-sm-2 col-form-label">ID Oksigen</label>
+                        <label for="nama_program" class="col-sm-2 col-form-label">Nama Program</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="idOksigen" value="<?php echo $idOksigen ?>" placeholder="ID Oksigen" required>
+                            <input type="text" class="form-control" name="nama_program" placeholder="Masukan Nama program..." required>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="name" class="col-sm-2 col-form-label">Nama Oksigen</label>
+                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="name" value="<?php echo $name ?>" required>
+                            <textarea class="form-control" name="deskripsi" placeholder="Masukan Deskripsi Program..." required></textarea>
                         </div>
                     </div>
+
+
 
                     <div class="row">
                         <div class="col offset-md-2">
