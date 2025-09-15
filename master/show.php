@@ -34,7 +34,7 @@
                                         <td>
                                             <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=bidangEdit&id=<?php echo $data['bidang_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=bidangDelete&id=<?php echo $data['bidang_id']; ?>"><i class="fa fa-trash"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-action" href="#" data-type="hapus" data-url="?page=bidangDelete&id=<?php echo $data['bidang_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                         </td>
                                     </tr>
@@ -86,7 +86,7 @@
                                         <td>
                                             <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=programEdit&id=<?php echo $data['program_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=programDelete&id=<?php echo $data['program_id']; ?>"><i class="fa fa-trash"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-action" href="#" data-type="hapus" data-url="?page=programDelete&id=<?php echo $data['program_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                         </td>
                                     </tr>
@@ -136,7 +136,7 @@
                                         <td>
                                             <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=satuanEdit&id=<?php echo $data['satuan_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=satuanDelete&id=<?php echo $data['satuan_id']; ?>"><i class="fa fa-trash"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-action" href="#" data-type="hapus" data-url="?page=satuanDelete&id=<?php echo $data['satuan_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                         </td>
                                     </tr>

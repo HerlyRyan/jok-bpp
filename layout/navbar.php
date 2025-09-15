@@ -8,9 +8,9 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                  <strong>Halo, </strong>
-                  <?php if (isset($_SESSION['username']) != '') : echo $_SESSION['username'];
-                  endif; ?>
+                    <strong>Halo, </strong>
+                    <?php if (isset($_SESSION['username']) != '') : echo $_SESSION['username'];
+                    endif; ?>
                 </span>
                 <img class="img-profile rounded-circle"
                     src="../../assets/img/undraw_profile.svg">

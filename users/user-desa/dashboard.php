@@ -1,23 +1,25 @@
 <?php
+$user_id = $_SESSION['user_id'];
+
 // Usulan Masuk
-$queryUsulanMasuk = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Masuk'");
+$queryUsulanMasuk = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Masuk' AND user_id = $user_id");
 $totalUsulanMasuk = mysqli_num_rows($queryUsulanMasuk);
 
 // Usulan Diverifikasi
-$queryUsulanDiverifikasi = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Diverifikasi'");
+$queryUsulanDiverifikasi = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Diverifikasi' AND user_id = $user_id");
 $totalUsulanDiverifikasi = mysqli_num_rows($queryUsulanDiverifikasi);
 
-// Usulan Ditetapkan
-$queryUsulanDitetapkan = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Ditetapkan'");
-$totalUsulanDitetapkan = mysqli_num_rows($queryUsulanDitetapkan);
+// Usulan Ditolak
+$queryUsulanDitolak = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Ditolak' AND user_id = $user_id");
+$totalUsulanDitolak = mysqli_num_rows($queryUsulanDitolak);
 
 // Pengaduan
-$queryPengaduan = mysqli_query($con, "SELECT * FROM pengaduan");
+$queryPengaduan = mysqli_query($con, "SELECT * FROM pengaduan WHERE user_id = $user_id");
 $totalPengaduan = mysqli_num_rows($queryPengaduan);
 ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?php echo $title; ?></h1>
+    <h1 class="h3 mb-0 text-primary"><?php echo $title; ?></h1>
 </div>
 
 <div class="row justify-content-center">
@@ -57,16 +59,16 @@ $totalPengaduan = mysqli_num_rows($queryPengaduan);
     </div>
 
     <div class="col-xl-4 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
+        <div class="card border-left-danger shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Usulan Tidak Layak</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalUsulanDitetapkan; ?></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalUsulanDitolak; ?></div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-clipboard-check fa-2x text-gray-300"></i>
+                        <i class="fas fa-times-circle fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -98,7 +100,7 @@ $totalPengaduan = mysqli_num_rows($queryPengaduan);
                         <tbody>
 
                             <?php
-                            $result = mysqli_query($con, "SELECT * FROM usulan");
+                            $result = mysqli_query($con, "SELECT * FROM usulan WHERE user_id = $user_id");
 
                             $no = 1;
                             while ($data = mysqli_fetch_array($result)) {
@@ -107,9 +109,26 @@ $totalPengaduan = mysqli_num_rows($queryPengaduan);
 
                                 <tr>
                                     <td><?= $no++; ?></td>
-                                    <td><?php echo ucfirst($data['usulan']); ?></td>
+                                    <td><?php echo ucfirst($data['judul']); ?></td>
                                     <td><?php echo $data['tanggal']; ?> </td>
-                                    <td> <?php echo $data['status_penetapan']; ?> </td>
+                                    <td>
+                                        <?php
+                                        $status = $data['status_penetapan'];
+                                        $badge_class = '';
+                                        if ($status == 'Masuk') {
+                                            $badge_class = 'badge-warning'; // Kuning untuk status 'Masuk' (Pending)
+                                        } elseif ($status == 'Diverifikasi') {
+                                            $badge_class = 'badge-primary'; // Biru untuk 'Diverifikasi'
+                                        } elseif ($status == 'Ditetapkan') {
+                                            $badge_class = 'badge-success'; // Hijau untuk 'Ditetapkan' (Diterima)
+                                        } elseif ($status == 'Ditolak') {
+                                            $badge_class = 'badge-danger'; // Merah untuk 'Ditolak'
+                                        } else {
+                                            $badge_class = 'badge-secondary'; // Default
+                                        }
+                                        ?>
+                                        <span class="badge <?php echo $badge_class; ?> text-uppercase"><?php echo $status; ?></span>
+                                    </td>
                                 </tr>
                             <?php
                             }

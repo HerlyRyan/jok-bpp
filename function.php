@@ -97,27 +97,59 @@ function sweetAlert($icon, $title, $redirect = null, $timer = 3000)
     </script>";
 }
 
-function sweetConfirm($title = "Apakah Anda yakin?", $text = "Data yang sudah dihapus tidak bisa dikembalikan!")
+function sweetConfirm()
 {
 	echo "
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const deleteButtons = document.querySelectorAll('.btn-delete');
+        const actionButtons = document.querySelectorAll('.btn-action');
 
-        deleteButtons.forEach(function (button) {
+        actionButtons.forEach(function (button) {
             button.addEventListener('click', function (e) {
                 e.preventDefault();
-                const url = this.getAttribute('data-url');
+                const url   = this.getAttribute('data-url');
+                const type  = this.getAttribute('data-type'); // terima / tolak / tetapkan
+                let title   = 'Apakah Anda yakin?';
+                let text    = '';
+                let icon    = 'warning';
+                let confirm = 'Ya, lanjutkan!';
+
+                switch (type) {
+                    case 'terima':
+                        title   = 'Terima Usulan?';
+                        text    = 'Usulan akan diberi status Diverifikasi.';
+                        icon    = 'question';
+                        confirm = 'Ya, Terima';
+                        break;
+                    case 'tolak':
+                        title   = 'Tolak Usulan?';
+                        text    = 'Usulan akan ditolak dan tidak diproses lebih lanjut.';
+                        icon    = 'error';
+                        confirm = 'Ya, Tolak';
+                        break;
+                    case 'tetapkan':
+                        title   = 'Tetapkan Usulan?';
+                        text    = 'Usulan akan ditetapkan secara final.';
+                        icon    = 'success';
+                        confirm = 'Ya, Tetapkan';
+                        break;
+                    case 'hapus':
+                        title   = 'Apakah Anda yakin?';
+                        text    = 'Data yang sudah dihapus tidak bisa dikembalikan!';
+                        icon    = 'warning';
+                        confirm = 'Ya, Hapus';
+                        break;
+                }
 
                 Swal.fire({
-                    title: '$title',
-                    text: '$text',
-                    icon: 'warning',
+                    title: title,
+                    text: text,
+                    icon: icon,
                     showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Ya, hapus!',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: confirm,
                     cancelButtonText: 'Batal'
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -129,4 +161,66 @@ function sweetConfirm($title = "Apakah Anda yakin?", $text = "Data yang sudah di
     });
     </script>
     ";
+}
+
+function sweetModalVerifikasi()
+{
+	echo <<<HTML
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+    	const actionButtons = document.querySelectorAll(".btn-action");
+
+    	actionButtons.forEach(button => {
+        	button.addEventListener("click", function (e) {
+            	e.preventDefault();
+
+            	const type  = this.getAttribute("data-type");  // terima/tolak
+            	const id    = this.getAttribute("data-id");
+            	const user  = this.getAttribute("data-user");
+
+            	let title   = (type === "terima") ? "Verifikasi Usulan - Terima" : "Verifikasi Usulan - Tolak";
+            	let hasil   = (type === "terima") ? "Diterima" : "Ditolak";
+
+            	Swal.fire({
+                	title: title,
+                	html: `
+                    	<form id="formVerifikasi">
+                        	<input type="hidden" name="action" value="\${type}">
+                        	<input type="hidden" name="usulan_id" value="\${id}">
+                        	<input type="hidden" name="user_id" value="\${user}">
+                        	<div class="form-group text-left">
+                            	<label>Catatan Admin</label>
+                            	<textarea class="form-control" name="catatan" rows="3" placeholder="Tulis catatan verifikasi"></textarea>
+                        	</div>
+                    	</form>
+                	`,
+                	focusConfirm: false,
+                	showCancelButton: true,
+                	confirmButtonText: "Simpan",
+                	cancelButtonText: "Batal",
+                	preConfirm: () => {
+                    	const form = document.getElementById("formVerifikasi");
+                    	const formData = new FormData(form);
+
+                    	return fetch("../../usulan/verifikasi.php", {
+                        	method: "POST",
+                        	body: formData
+                    	})
+                    	.then(response => response.json())
+                    	.catch(error => {
+                        	Swal.showValidationMessage(`Request gagal: \${error}`);
+                    	});
+                	}
+            	}).then((result) => {
+                	if (result.isConfirmed) {
+                    	Swal.fire("Berhasil!", "Data berhasil diverifikasi.", "success")
+                        	.then(() => location.reload());
+                	}
+            	});
+        	});
+    	});
+	});
+	</script>
+HTML;
 }

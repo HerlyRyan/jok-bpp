@@ -41,7 +41,7 @@
                                     <td>
                                         <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=userEdit&id=<?php echo $data['user_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                        <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=userDelete&id=<?php echo $data['user_id']; ?>"><i class="fa fa-trash"></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-action" href="#"data-type="hapus"  data-url="?page=userDelete&id=<?php echo $data['user_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                     </td>
                                 </tr>

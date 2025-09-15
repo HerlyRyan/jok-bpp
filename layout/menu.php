@@ -28,7 +28,7 @@ if ($_SESSION['status'] == 'login') {
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'oksigenReturn' ? 'active' : '' ?>" href="?page=oksigenReturn">
+                <a class="nav-link <?= $_GET['page'] == 'usulan' ? 'active' : '' ?>" href="?page=usulan">
                     <i class="fas fa-fw fa-clipboard-check"></i>
                     <span>Verifikasi Usulan</span>
                 </a>

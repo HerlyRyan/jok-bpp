@@ -1,53 +1,32 @@
 <?php
 if (isset($_POST['submit'])) {
-    $user_id         = $_POST['user_id'];
-    $bidang_id       = $_POST['bidang_id'];
-    $satuan_id       = $_POST['satuan_id'];
-    $program_id      = $_POST['program_id'];
-    $usulan          = $_POST['usulan'];
-    $volume          = $_POST['volume'];
+    $user_id    = $_POST['user_id'];
+    $bidang_id  = $_POST['bidang_id'];
+    $satuan_id  = $_POST['satuan_id'];
+    $program_id = $_POST['program_id'];
+    $judul      = $_POST['judul'];
+    $lokasi     = $_POST['lokasi'];
+    $usulan     = $_POST['usulan'];
+    $volume     = $_POST['volume'];
 
-    $query = mysqli_query($con, "SELECT * FROM tb_oxygen_stocks WHERE id_oxygen = '$idOksigen'");
-    $dataTabung = mysqli_fetch_array($query);
-    $idData = $dataTabung['id_oxygen'];
+    // ambil tanggal & tahun sekarang
+    $tanggal = date('Y-m-d'); // format DATE
+    $tahun   = date('Y');     // format YEAR
 
+    $status_penetapan = "Masuk";
 
-    $result = mysqli_query($con, "INSERT INTO tb_oxygen_data(id_oxygen, name) VALUES('$idOksigen','$name')");
+    $result = mysqli_query($con, "
+        INSERT INTO usulan(user_id, bidang_id, satuan_id, program_id, judul, lokasi, usulan, volume, tanggal, tahun, status_penetapan) 
+        VALUES('$user_id','$bidang_id','$satuan_id','$program_id', '$judul', '$lokasi', '$usulan','$volume','$tanggal','$tahun', '$status_penetapan')
+    ");
+
     if ($result) {
-        echo '
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({                    
-                    icon: "success",
-                    title: "Data berhasil disimpan",
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(function() {
-                    window.location.href = "?page=master";
-                });
-            });
-            </script>
-            ';
+        sweetAlert("success", "Data berhasil disimpan", "?page=dashboard");
     } else {
-        echo '
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    
-                    icon: "error",
-                    title: "ID sudah ada",
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(function() {
-                    window.location.href = "?page=master";
-                });
-            });
-            </script>
-        ';
+        sweetAlert("error", "Data gagal disimpan", "?page=dashboard");
     }
 }
+
 ?>
 
 <div class="row justify-content-center">
@@ -68,10 +47,10 @@ if (isset($_POST['submit'])) {
                                     <option value="">-- Pilih Bidang --</option>
                                     <?php
                                     // Contoh query untuk mengambil data bidang
-                                    // $queryBidang = mysqli_query($con, "SELECT * FROM tb_bidang");
-                                    // while($data = mysqli_fetch_array($queryBidang)){
-                                    //     echo '<option value="'.$data['id_bidang'].'">'.$data['nama_bidang'].'</option>';
-                                    // }
+                                    $queryBidang = mysqli_query($con, "SELECT * FROM bidang");
+                                    while ($data = mysqli_fetch_array($queryBidang)) {
+                                        echo '<option value="' . $data['bidang_id'] . '">' . $data['nama_bidang'] . '</option>';
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -86,10 +65,10 @@ if (isset($_POST['submit'])) {
                                     <option value="">-- Pilih Program --</option>
                                     <?php
                                     // Contoh query untuk mengambil data program
-                                    // $queryProgram = mysqli_query($con, "SELECT * FROM tb_program");
-                                    // while($data = mysqli_fetch_array($queryProgram)){
-                                    //     echo '<option value="'.$data['id_program'].'">'.$data['nama_program'].'</option>';
-                                    // }
+                                    $queryProgram = mysqli_query($con, "SELECT * FROM program");
+                                    while ($data = mysqli_fetch_array($queryProgram)) {
+                                        echo '<option value="' . $data['program_id'] . '">' . $data['nama_program'] . '</option>';
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -98,9 +77,27 @@ if (isset($_POST['submit'])) {
 
                     <div class="mb-3 row">
                         <div class="col">
-                            <label for="usulan" class="col-sm-4 col-form-label">Nama Kegiatan</label>
+                            <label for="judul" class="col-sm-4 col-form-label">Nama Kegiatan</label>
                             <div class="col-sm-12">
-                                <textarea class="form-control" name="usulan" placeholder="Masukan Uraian Usulan..." required></textarea>
+                                <input class="form-control" name="judul" placeholder="Masukan Nama Kegiatan..." required></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <label for="lokasi" class="col-sm-4 col-form-label">Lokasi</label>
+                            <div class="col-sm-12">
+                                <input class="form-control" name="lokasi" placeholder="Masukan Lokasi..." required></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <label for="usulan" class="col-sm-4 col-form-label">Usulan</label>
+                            <div class="col-sm-12">
+                                <input class="form-control" name="usulan" placeholder="Masukan Usulan" required></input>
                             </div>
                         </div>
                     </div>
@@ -119,10 +116,10 @@ if (isset($_POST['submit'])) {
                                     <option value="">-- Pilih Satuan --</option>
                                     <?php
                                     // Contoh query untuk mengambil data satuan
-                                    // $querySatuan = mysqli_query($con, "SELECT * FROM tb_satuan");
-                                    // while($data = mysqli_fetch_array($querySatuan)){
-                                    //     echo '<option value="'.$data['id_satuan'].'">'.$data['nama_satuan'].'</option>';
-                                    // }
+                                    $querySatuan = mysqli_query($con, "SELECT * FROM satuan");
+                                    while ($data = mysqli_fetch_array($querySatuan)) {
+                                        echo '<option value="' . $data['satuan_id'] . '">' . $data['nama_satuan'] . '</option>';
+                                    }
                                     ?>
                                 </select>
                             </div>
