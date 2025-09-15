@@ -76,7 +76,7 @@
                                 include '../master/edit.php';
                                 break;
 
-                                //  oksigen return
+                            //  oksigen return
                             case "oksigenReturn";
                                 $title = 'Data Tabung Return';
                                 include '../oksigenreturn/show.php';
@@ -91,7 +91,7 @@
                                 include '../oksigenreturn/delete.php';
                                 break;
 
-                                // Oksigen masuk
+                            // Oksigen masuk
                             case "oksigenMasuk";
                                 $title = 'Data Tabung Masuk';
                                 include '../oksigenmasuk/show.php';
@@ -106,7 +106,7 @@
                                 include '../oksigenmasuk/delete.php';
                                 break;
 
-                                // Oksigen keluar
+                            // Oksigen keluar
                             case "oksigenKeluar";
                                 $title = 'Data Tabung Keluar';
                                 include '../oksigenkeluar/show.php';
@@ -124,7 +124,7 @@
                                 include '../oksigenkeluar/delete.php';
                                 break;
 
-                                //Laporan
+                            //Laporan
                             case "laporanMasuk";
                                 $title = 'Laporan Tabung Masuk';
                                 include '../laporan/masuk.php';
@@ -150,7 +150,7 @@
                                 include '../laporan/pemakaianDivisi.php';
                                 break;
 
-                                //  Oksigen stok
+                            //  Oksigen stok
                             case "stok";
                                 $title = 'Laporan Stok Tabung';
                                 include '../stok/show.php';
@@ -165,13 +165,13 @@
                                 include '../stok/print.php';
                                 break;
 
-                                // Tracking Serial Number
+                            // Tracking Serial Number
                             case "trackingSerialNumber";
                                 $title = 'Laporan Serial Number';
                                 include '../serialnumber/show.php';
                                 break;
 
-                                // user
+                            // user
 
                             case "user";
                                 $title = 'Data User';
@@ -226,6 +226,9 @@
     </div>
 
     <?php include_once '../layout/js.php' ?>
+    <?php
+    sweetConfirm()
+    ?>
 </body>
 
 </html>

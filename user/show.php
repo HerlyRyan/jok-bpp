@@ -19,7 +19,7 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Username</th>
-                                <th>Level</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,20 +37,11 @@
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?php echo ucfirst($data['username']); ?></td>
-                                    <td><?php
-                                        if ($data['level'] == 2) {
-                                            echo 'Supervisor';
-                                        } else if ($data['level'] == 1) {
-                                            echo 'Divisi';
-                                        } else {
-                                            echo 'Administrator';
-                                        }
-                                        ?>
-                                    </td>
+                                    <td><?php echo $data['role']; ?></td>
                                     <td>
-                                        <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=userEdit&id=<?php echo $data['id']; ?>"><i class="fa fa-pen"></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="edit data" class="btn btn-sm btn-circle btn-success" href="?page=userEdit&id=<?php echo $data['user_id']; ?>"><i class="fa fa-pen"></i></a>
 
-                                        <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger" href="?page=userDelete&id=<?php echo $data['id']; ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="hapus data" class="btn btn-sm btn-circle btn-danger btn-delete" href="#" data-url="?page=userDelete&id=<?php echo $data['user_id']; ?>"><i class="fa fa-trash"></i></a>
 
                                     </td>
                                 </tr>
@@ -60,7 +51,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>

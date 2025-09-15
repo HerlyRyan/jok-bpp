@@ -1,19 +1,33 @@
 <?php
 $id = $_GET['id'];
-$result = mysqli_query($con, "SELECT * FROM user WHERE id=$id");
-list(, $username, $password, $level) = mysqli_fetch_array($result);
-
+$result = mysqli_query($con, "SELECT * FROM users WHERE user_id=$id");
+list(, $username, $password, $role) = mysqli_fetch_array($result);
+$success = 2; // state awal
 
 if (isset($_POST['submitLevel'])) {
-  $level = $_POST['level'];
-  mysqli_query($con, "UPDATE user SET level='$level' WHERE id=$id");
-  echo "<script>window.location.href = '?page=user';</script>";
+  $role = $_POST['role'];
+  $update = mysqli_query($con, "UPDATE users SET role='$role' WHERE user_id=$id");
+  if ($update) {
+    $success = 1;
+  } else {
+    $success = 0;
+  }
 }
 
 if (isset($_POST['submitUsername'])) {
   $username = $_POST['username'];
-  mysqli_query($con, "UPDATE user SET username='$username' WHERE id=$id");
-  echo "<script>window.location.href = '?page=user';</script>";
+  // validasi username yang sama
+  $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
+  $rowCount = mysqli_num_rows($result);
+
+  if (mysqli_num_rows($result) > 0) {
+    $success = 0;
+  } else {
+    $update = mysqli_query($con, "UPDATE users SET username='$username' WHERE user_id=$id");
+    if ($update) {
+      $success = 1;
+    }
+  }
 }
 
 if (isset($_POST['submitPassword'])) {
@@ -22,11 +36,12 @@ if (isset($_POST['submitPassword'])) {
   $passwordHash = $data['password'];
 
   if (password_verify($passwordLama, $password)) {
-    mysqli_query($con, "UPDATE user SET password='$passwordBaru' WHERE id=$id");
-    echo "<script>alert('Password berhasil diganti')</script>";
-    echo "<script>window.location.href = '?page=user-show';</script>";
+    $update = mysqli_query($con, "UPDATE users SET password='$passwordBaru' WHERE user_id=$id");
+    if ($update) {
+      $success = 1;
+    }
   } else {
-    echo "<script>alert('Password lama tidak sesuai')</script>";
+    $success = 0;
   }
 }
 
@@ -44,14 +59,14 @@ if (isset($_POST['submitPassword'])) {
       <div class="card-body">
         <form method="post">
           <div class="row mb-3">
-            <label for="level" class="col-sm-2 col-form-label">Level</label>
+            <label for="role" class="col-sm-2 col-form-label">Role</label>
             <div class="col-sm-10">
-              <select name="level" id="level" class="form-control" name="level" required>
+              <select name="role" id="role" class="form-control" name="role" required>
                 <option value="-" disabled>- Pilih -</option>
-                <option value="0" <?php echo ($level == 0) ? "selected" : ""; ?>>Administrator
+                <option value="admin" <?php echo ($role == 'admin') ? "selected" : ""; ?>>Admin
                 </option>
-                <option value="1" <?php echo ($level == 1) ? "selected" : ""; ?>>Divisi</option>
-                <option value="2" <?php echo ($level == 2) ? "selected" : ""; ?>>Supervisor</option>
+                <option value="user_desa" <?php echo ($role == 'user_desa') ? "selected" : ""; ?>>User Desa</option>
+                <option value="pimpinan" <?php echo ($role == 'pimpinan') ? "selected" : ""; ?>>Pimpinan</option>
               </select>
             </div>
             <div class="col offset-sm-2">
@@ -102,7 +117,13 @@ if (isset($_POST['submitPassword'])) {
               Kembali</a>
           </div>
         </div>
-
+        <?php
+        if ($success == 1) {
+          sweetAlert("success", "Data berhasil diubah", "?page=user");
+        } else if ($success == 0) {
+          sweetAlert("error", "Data gagal diubah", "?page=user");
+        }
+        ?>
       </div>
     </div>
   </div>

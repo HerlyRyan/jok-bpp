@@ -74,3 +74,59 @@ function chartDivisi($con)
 
 	return $query;
 }
+
+function sweetAlert($icon, $title, $redirect = null, $timer = 3000)
+{
+	echo "
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script type='text/javascript'>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: '$icon',
+                title: '$title',
+                showConfirmButton: false,
+                timer: $timer
+            }).then(function() {";
+
+	if ($redirect) {
+		echo "window.location.href = '$redirect';";
+	}
+
+	echo "});
+        });
+    </script>";
+}
+
+function sweetConfirm($title = "Apakah Anda yakin?", $text = "Data yang sudah dihapus tidak bisa dikembalikan!")
+{
+	echo "
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.btn-delete');
+
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const url = this.getAttribute('data-url');
+
+                Swal.fire({
+                    title: '$title',
+                    text: '$text',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+    });
+    </script>
+    ";
+}

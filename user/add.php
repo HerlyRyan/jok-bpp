@@ -4,25 +4,25 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $passwordKonfirmasi = $_POST['passwordKonfirmasi'];
-    $level = $_POST['level'];
+    $role = $_POST['role'];
     $passHash = password_hash($password, PASSWORD_DEFAULT);
 
     // validasi username yang sama
-    $result = mysqli_query($con, "SELECT * FROM user WHERE username = '$username'");
+    $result = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
     $rowCount = mysqli_num_rows($result);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "<script>window.alert('username tidak dapat digunakan');</script>";
-        echo "<script>window.location.href = '?page=userAdd';</script>";
-        exit;
-    }
-
-    if ($password === $passwordKonfirmasi) {
-        $error = 0;
-        $insert = mysqli_query($con, "INSERT INTO user(username,password,level) VALUES('$username','$passHash','$level')");
-        echo "<script>window.location.href = '?page=user';</script>";
+        sweetAlert("error", "Username tidak dapat digunakan", "?page=userAdd");
     } else {
-        $error = 1;
+        if ($password === $passwordKonfirmasi) {
+            $error = 0;
+            $insert = mysqli_query($con, "INSERT INTO users (username, password, role) VALUES('$username','$passHash','$role')");
+            if ($insert) {
+                sweetAlert("success", "Data berhasil disimpan", "?page=user");
+            }
+        } else {
+            $error = 1;
+        }
     }
 }
 
@@ -44,13 +44,13 @@ if (isset($_POST['submit'])) {
                     </div>
 
                     <div class="form-group row">
-                        <label for="level" class="col-sm-3 col-form-label">Level</label>
+                        <label for="role" class="col-sm-3 col-form-label">Role</label>
                         <div class="col-sm-9">
-                            <select name="level" class="form-control">
-                                <option value="-">- pilih level user -</option>
-                                <option value="0">Admin</option>
-                                <option value="1">Divisi</option>
-                                <option value="2">Supervisor</option>
+                            <select name="role" class="form-control">
+                                <option value="-">-- Pilih Role User --</option>
+                                <option value="admin">Admin</option>
+                                <option value="user_desa">User Desa</option>
+                                <option value="pimpinan">Pimpinan</option>
                             </select>
                         </div>
                     </div>
@@ -80,14 +80,7 @@ if (isset($_POST['submit'])) {
 
                 <?php
                 if ($error == 1) {
-                    echo '
-                        <div class="mt-4 alert alert-danger alert-dismissible fade show" role="alert">
-                            Periksa kembali password!
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        ';
+                    sweetAlert("error", "Data gagal disimpan", "?page=user");
                 }
                 ?>
             </div>

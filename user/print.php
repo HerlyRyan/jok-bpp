@@ -75,7 +75,7 @@
             <tr class="text-center">
                 <th>No</th>
                 <th>Username</th>
-                <th>Level</th>
+                <th>Role</th>
             </tr>
         </thead>
 
@@ -86,7 +86,7 @@
             $no = 1;
             $result = mysqli_query(
                 $con,
-                "SELECT username, level FROM user"
+                "SELECT username, role FROM users"
             );
 
             $no = 1;
@@ -96,16 +96,7 @@
                 <tr style="text-align: center;">
                     <td><?= $no++; ?></td>
                     <td><?php echo $data['username'] ?></td>
-                    <td><?php
-                        if ($data['level'] == 2) {
-                            echo 'Supervisor';
-                        } else if ($data['level'] == 1) {
-                            echo 'Divisi';
-                        } else {
-                            echo 'Administrator';
-                        }
-                        ?>
-                    </td>
+                    <td><?php echo $data['role']; ?> </td>
                 </tr>
             <?php
             }
