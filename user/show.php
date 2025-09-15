@@ -14,13 +14,13 @@
                 <hr>
 
                 <div class="table-responsive mt-4">
-                    <table class="table table-bordered table-hover" id="dataKategori" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Username</th>
                                 <th>Role</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
 

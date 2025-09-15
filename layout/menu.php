@@ -29,28 +29,28 @@ if ($_SESSION['status'] == 'login') {
             </li>
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenReturn' ? 'active' : '' ?>" href="?page=oksigenReturn">
-                    <i class="fas fa-fw fa-truck"></i>
+                    <i class="fas fa-fw fa-clipboard-check"></i>
                     <span>Verifikasi Usulan</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenMasuk' ? 'active' : '' ?>" href="?page=oksigenMasuk">
-                    <i class="fas fa-fw fa-level-down-alt"></i>
+                    <i class="fas fa-fw fa-bullseye"></i>
                     <span>Penetapan Rencana</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
-                    <i class="fas fa-fw fa-level-up-alt"></i>
+                    <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Pengaduan</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'master' ? 'active' : '' ?>" href="?page=master">
-                    <i class="fas fa-fw fa-list"></i>
+                    <i class="fas fa-fw fa-database"></i>
                     <span>Master Data</span>
                 </a>
             </li>
@@ -58,7 +58,7 @@ if ($_SESSION['status'] == 'login') {
             <li class="nav-item">
                 <a class="nav-link collapsed <?= $_GET['page'] == 'stok' || $_GET['page'] == 'trackingSerialNumber' || $_GET['page'] == 'laporanMasuk' || $_GET['page'] == 'laporanKeluar' || $_GET['page'] == 'laporanReturn' || $_GET['page'] == 'laporanPemakaianTabung' || $_GET['page'] == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-file"></i>
+                    <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Laporan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSidebar">
@@ -76,7 +76,7 @@ if ($_SESSION['status'] == 'login') {
 
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'user' ? 'active' : '' ?>" href="?page=user">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>User</span></a>
             </li>
         <?php
@@ -90,14 +90,14 @@ if ($_SESSION['status'] == 'login') {
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
-                    <i class="fas fa-fw fa-level-up-alt"></i>
+                <a class="nav-link <?= $_GET['page'] == 'usulanAdd' ? 'active' : '' ?>" href="?page=usulanAdd">
+                    <i class="fas fa-fw fa-paper-plane"></i>
                     <span>Usulan</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
-                    <i class="fas fa-fw fa-level-up-alt"></i>
+                    <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Pengaduan</span>
                 </a>
             </li>
@@ -112,7 +112,7 @@ if ($_SESSION['status'] == 'login') {
             <li class="nav-item">
                 <a class="nav-link collapsed <?= $_GET['page'] == 'stok' || $_GET['page'] == 'trackingSerialNumber' || $_GET['page'] == 'laporanMasuk' || $_GET['page'] == 'laporanKeluar' || $_GET['page'] == 'laporanReturn' || $_GET['page'] == 'laporanPemakaianTabung' || $_GET['page'] == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-file"></i>
+                    <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Laporan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSidebar">

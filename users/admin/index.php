@@ -8,13 +8,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Aplikasi Bapperida Pulang Pisau</title>
-    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH">
+    <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" >
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.bootstrap4.css">
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
@@ -31,19 +31,19 @@
     <div id="wrapper">
 
         <?php
-        include_once '../layout/menu.php';
-        include_once '../function.php';
-        include_once '../logincheck.php';
+        include_once '../../layout/menu.php';
+        include_once '../../function.php';
+        include_once '../../logincheck.php';
         ?>
         <!-- main content -->
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?php include_once '../layout/navbar.php' ?>
+                <?php include_once '../../layout/navbar.php' ?>
 
                 <!-- section content -->
                 <div class="container-fluid">
                     <?php
-                    include_once '../connection.php';
+                    include_once '../../connection.php';
                     error_reporting(0);
                     if ($_SESSION['level'] == 0) {
                         switch ($_GET['page']) {
@@ -59,137 +59,137 @@
                             // Master Oksigen
                             case "master";
                                 $title = 'Data Master';
-                                include '../master/show.php';
+                                include '../../master/show.php';
                                 break;
 
                             case "masterAdd";
                                 $title = 'Tambah Master';
-                                include '../master/add.php';
+                                include '../../master/add.php';
                                 break;
 
                             case "masterDelete";
-                                include '../master/delete.php';
+                                include '../../master/delete.php';
                                 break;
 
                             case "masterEdit";
                                 $title = 'Edit Master';
-                                include '../master/edit.php';
+                                include '../../master/edit.php';
                                 break;
 
                             //  oksigen return
                             case "oksigenReturn";
                                 $title = 'Data Tabung Return';
-                                include '../oksigenreturn/show.php';
+                                include '../../oksigenreturn/show.php';
                                 break;
 
                             case "oksigenReturnAdd";
                                 $title = 'Tambah Oksigen Return';
-                                include '../oksigenreturn/add.php';
+                                include '../../oksigenreturn/add.php';
                                 break;
 
                             case "oksigenReturnDelete";
-                                include '../oksigenreturn/delete.php';
+                                include '../../oksigenreturn/delete.php';
                                 break;
 
                             // Oksigen masuk
                             case "oksigenMasuk";
                                 $title = 'Data Tabung Masuk';
-                                include '../oksigenmasuk/show.php';
+                                include '../../oksigenmasuk/show.php';
                                 break;
 
                             case "oksigenMasukEdit";
                                 $title = 'Edit Data Masuk';
-                                include '../oksigenmasuk/edit.php';
+                                include '../../oksigenmasuk/edit.php';
                                 break;
 
                             case "oksigenMasukDelete";
-                                include '../oksigenmasuk/delete.php';
+                                include '../../oksigenmasuk/delete.php';
                                 break;
 
                             // Oksigen keluar
                             case "oksigenKeluar";
                                 $title = 'Data Tabung Keluar';
-                                include '../oksigenkeluar/show.php';
+                                include '../../oksigenkeluar/show.php';
                                 break;
 
                             case "oksigenKeluarAccepted";
-                                include '../oksigenkeluar/accept.php';
+                                include '../../oksigenkeluar/accept.php';
                                 break;
 
                             case "oksigenKeluarRejected";
-                                include '../oksigenkeluar/reject.php';
+                                include '../../oksigenkeluar/reject.php';
                                 break;
 
                             case "oksigenKeluarDelete";
-                                include '../oksigenkeluar/delete.php';
+                                include '../../oksigenkeluar/delete.php';
                                 break;
 
                             //Laporan
                             case "laporanMasuk";
                                 $title = 'Laporan Tabung Masuk';
-                                include '../laporan/masuk.php';
+                                include '../../laporan/masuk.php';
                                 break;
 
                             case "laporanKeluar";
                                 $title = 'Laporan Tabung Keluar';
-                                include '../laporan/keluar.php';
+                                include '../../laporan/keluar.php';
                                 break;
 
                             case "laporanReturn";
                                 $title = 'Laporan Tabung Return';
-                                include '../laporan/return.php';
+                                include '../../laporan/return.php';
                                 break;
 
                             case "laporanPemakaianTabung";
                                 $title = 'Laporan Pemakaian Tabung';
-                                include '../laporan/pemakaianTabung.php';
+                                include '../../laporan/pemakaianTabung.php';
                                 break;
 
                             case "laporanPemakaianDivisi";
                                 $title = 'Laporan Pemakaian Divisi';
-                                include '../laporan/pemakaianDivisi.php';
+                                include '../../laporan/pemakaianDivisi.php';
                                 break;
 
                             //  Oksigen stok
                             case "stok";
                                 $title = 'Laporan Stok Tabung';
-                                include '../stok/show.php';
+                                include '../../stok/show.php';
                                 break;
 
                             case "stokDetail";
                                 $title = 'Data Stok Detail';
-                                include '../stok/detail.php';
+                                include '../../stok/detail.php';
                                 break;
 
                             case "stokPrint";
-                                include '../stok/print.php';
+                                include '../../stok/print.php';
                                 break;
 
                             // Tracking Serial Number
                             case "trackingSerialNumber";
                                 $title = 'Laporan Serial Number';
-                                include '../serialnumber/show.php';
+                                include '../../serialnumber/show.php';
                                 break;
 
                             // user
 
                             case "user";
                                 $title = 'Data User';
-                                include '../user/show.php';
+                                include '../../user/show.php';
                                 break;
 
                             case "userAdd";
                                 $title = 'Tambah Data User';
-                                include '../user/add.php';
+                                include '../../user/add.php';
                                 break;
 
                             case "userEdit";
                                 $title = 'Edit Data User';
-                                include '../user/edit.php';
+                                include '../../user/edit.php';
                                 break;
 
                             case "userDelete";
-                                include '../user/delete.php';
+                                include '../../user/delete.php';
                                 break;
                         }
                     }
@@ -198,7 +198,7 @@
                 </div>
             </div>
 
-            <?php include_once '../layout/footer.php' ?>
+            <?php include_once '../../layout/footer.php' ?>
         </div>
     </div>
 
@@ -219,13 +219,13 @@
                 <div class="modal-body">Pilih "Logout" di bawah jika Anda siap untuk mengakhiri sesi Anda saat ini.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="../logout.php">Logout</a>
+                    <a class="btn btn-primary" href="../../logout.php">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php include_once '../layout/js.php' ?>
+    <?php include_once '../../layout/js.php' ?>
     <?php
     sweetConfirm()
     ?>

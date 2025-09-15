@@ -14,20 +14,21 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     $result = mysqli_query($con, "SELECT * FROM users WHERE username='$username'");
     $cek = mysqli_num_rows($result);
-    list(, $u, $p, $r) = mysqli_fetch_array($result);
+    list($user_id, $u, $p, $r) = mysqli_fetch_array($result);
 
     if ($cek != 0) {
         if (password_verify($password, $p)) {
+            $_SESSION['user_id'] = $user_id;
             $_SESSION['username'] = $u;
             $_SESSION['role'] = $r;
             $_SESSION['status'] = 'login';
             if ($_SESSION['status']) {
                 if ($_SESSION['role'] == 'user_desa') {
-                    header('Location: user/?page=dashboard');
+                    header('Location: users/user-desa/?page=dashboard');
                 } else if ($_SESSION['role'] == 'pimpinan') {
-                    header('Location: pimpinan/?page=dashboard');
+                    header('Location: users/pimpinan/?page=dashboard');
                 } else {
-                    header('Location: admin/?page=dashboard');
+                    header('Location: users/admin/?page=dashboard');
                 }
             }
         }

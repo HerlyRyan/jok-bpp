@@ -13,7 +13,7 @@
                   endif; ?>
                 </span>
                 <img class="img-profile rounded-circle"
-                    src="../assets/img/undraw_profile.svg">
+                    src="../../assets/img/undraw_profile.svg">
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">

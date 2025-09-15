@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Aplikasi Monitoring Oksigen</title>
+    <title>Aplikasi Bapperida Pulang Pisau</title>
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -56,7 +56,7 @@
                                 include 'dashboard.php';
                                 break;
 
-                                //Laporan
+                            //Laporan
                             case "laporanMasuk";
                                 $title = 'Laporan Tabung Masuk';
                                 include '../laporan/masuk.php';
@@ -82,7 +82,7 @@
                                 include '../laporan/pemakaianDivisi.php';
                                 break;
 
-                                //  Oksigen stok
+                            //  Oksigen stok
                             case "stok";
                                 $title = 'Laporan Stok Tabung';
                                 include '../stok/show.php';
@@ -97,7 +97,7 @@
                                 include '../stok/print.php';
                                 break;
 
-                                // Tracking Serial Number
+                            // Tracking Serial Number
                             case "trackingSerialNumber";
                                 $title = 'Laporan Serial Number';
                                 include '../serialnumber/show.php';
