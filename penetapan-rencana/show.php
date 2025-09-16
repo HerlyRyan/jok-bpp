@@ -123,7 +123,7 @@
                             <td><?= htmlspecialchars(ucfirst($data['nama_program'])); ?></td>
                             <td><?= $data['tahun']; ?></td>
                             <td>
-                                <a data-toggle="tooltip" data-placement="top" class="btn btn-success btn-sm btn-action" href="#" data-type="tetapkan" data-url="?page=tetapkan&id=<?php echo $data['id']; ?>"><i class="fa fa-check fa-sm"></i> Tetapkan</a>
+                                <a data-toggle="tooltip" data-placement="top" class="btn btn-success btn-sm btn-action" href="#" data-type="tetapkan" data-url="?page=tetapkanRencana&id=<?php echo $data['id']; ?>"><i class="fa fa-check fa-sm"></i> Tetapkan</a>
                             </td>
                         </tr>
                     <?php } ?>

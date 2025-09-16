@@ -42,15 +42,21 @@
                             include "dashboard.php";
                             break;
 
-                        case "dashboard";
+                        case "dashboard":
                             $title = 'Dashboard';
                             include 'dashboard.php';
                             break;
 
-                        // Oksigen keluar
-                        case "usulanAdd";
+                        // Kirim Usulan
+                        case "usulanAdd":
                             $title = 'Form Usulan';
                             include '../../usulan/add.php';
+                            break;
+
+                        // Kirim Pengaduan
+                        case "pengaduanAdd":
+                            $title = 'Kirim Pengaduan';
+                            include '../../pengaduan/add.php';
                             break;
                     }
                     ?>

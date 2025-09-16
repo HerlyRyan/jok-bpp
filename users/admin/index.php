@@ -118,10 +118,19 @@
                                 include '../../penetapan-rencana/show.php';
                                 break;
 
-                            case "tetapkan":                        
+                            case "tetapkanRencana":                        
                                 include '../../penetapan-rencana/tetapkan.php';
                                 break;
-                            
+
+                            // Pengaduan
+                            case "pengaduan":
+                                $title = 'Daftar Pengaduan Masyarakat';
+                                include '../../pengaduan/show.php';
+                                break;
+
+                            case "tetapkanPengaduan":
+                                include '../../pengaduan/tetapkan.php';
+                                break;
 
                             //Laporan
                             case "laporanMasuk":

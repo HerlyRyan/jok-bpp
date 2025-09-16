@@ -43,7 +43,7 @@ if ($_SESSION['status'] == 'login') {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <?= $currentPage == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
+                <a class="nav-link <?= $currentPage == 'pengaduan' ? 'active' : '' ?>" href="?page=pengaduan">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Pengaduan</span>
                 </a>
@@ -97,7 +97,7 @@ if ($_SESSION['status'] == 'login') {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $currentPage == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
+                <a class="nav-link <?= $currentPage == 'pengaduanAdd' ? 'active' : '' ?>" href="?page=pengaduanAdd">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Pengaduan</span>
                 </a>
