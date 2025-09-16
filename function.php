@@ -169,7 +169,7 @@ function sweetModalVerifikasi()
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 	document.addEventListener("DOMContentLoaded", function () {
-    	const actionButtons = document.querySelectorAll(".btn-action");
+    	const actionButtons = document.querySelectorAll(".btn-verification");
 
     	actionButtons.forEach(button => {
         	button.addEventListener("click", function (e) {

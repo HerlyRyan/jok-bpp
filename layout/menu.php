@@ -6,6 +6,7 @@
 
 <?php
 session_start();
+$currentPage = isset($_GET['page']) ? $_GET['page'] : '';
 ?>
 
 <?php
@@ -23,40 +24,40 @@ if ($_SESSION['status'] == 'login') {
         if ($_SESSION['role'] == 'admin') {
         ?>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'dashboard' ? 'active' : '' ?>" href="?page=dashboard">
+                <a class="nav-link <?= $currentPage == 'dashboard' ? 'active' : '' ?>" href="?page=dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'usulan' ? 'active' : '' ?>" href="?page=usulan">
+                <a class="nav-link <?= $currentPage == 'usulan' ? 'active' : '' ?>" href="?page=usulan">
                     <i class="fas fa-fw fa-clipboard-check"></i>
                     <span>Verifikasi Usulan</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'oksigenMasuk' ? 'active' : '' ?>" href="?page=oksigenMasuk">
+                <a class="nav-link <?= $currentPage == 'penetapanRencana' ? 'active' : '' ?>" href="?page=penetapanRencana">
                     <i class="fas fa-fw fa-bullseye"></i>
                     <span>Penetapan Rencana</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
+                <a class="nav-link <?= $currentPage == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Pengaduan</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'master' ? 'active' : '' ?>" href="?page=master">
+                <a class="nav-link <?= $currentPage == 'master' ? 'active' : '' ?>" href="?page=master">
                     <i class="fas fa-fw fa-database"></i>
                     <span>Master Data</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed <?= $_GET['page'] == 'stok' || $_GET['page'] == 'trackingSerialNumber' || $_GET['page'] == 'laporanMasuk' || $_GET['page'] == 'laporanKeluar' || $_GET['page'] == 'laporanReturn' || $_GET['page'] == 'laporanPemakaianTabung' || $_GET['page'] == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                <a class="nav-link collapsed <?= $currentPage == 'stok' || $currentPage == 'trackingSerialNumber' || $currentPage == 'laporanMasuk' || $currentPage == 'laporanKeluar' || $currentPage == 'laporanReturn' || $currentPage == 'laporanPemakaianTabung' || $currentPage == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Laporan</span>
@@ -75,7 +76,7 @@ if ($_SESSION['status'] == 'login') {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'user' ? 'active' : '' ?>" href="?page=user">
+                <a class="nav-link <?= $currentPage == 'user' ? 'active' : '' ?>" href="?page=user">
                     <i class="fas fa-fw fa-users"></i>
                     <span>User</span></a>
             </li>
@@ -85,18 +86,18 @@ if ($_SESSION['status'] == 'login') {
         <?php if ($_SESSION['role'] == 'user_desa') {
         ?>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'dashboard' ? 'active' : '' ?>" href="?page=dashboard">
+                <a class="nav-link <?= $currentPage == 'dashboard' ? 'active' : '' ?>" href="?page=dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'usulanAdd' ? 'active' : '' ?>" href="?page=usulanAdd">
+                <a class="nav-link <?= $currentPage == 'usulanAdd' ? 'active' : '' ?>" href="?page=usulanAdd">
                     <i class="fas fa-fw fa-paper-plane"></i>
                     <span>Usulan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
+                <a class="nav-link <?= $currentPage == 'oksigenKeluar' ? 'active' : '' ?>" href="?page=oksigenKeluar">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Pengaduan</span>
                 </a>
@@ -105,12 +106,12 @@ if ($_SESSION['status'] == 'login') {
         <?php if ($_SESSION['role'] == 'pimpinan') {
         ?>
             <li class="nav-item">
-                <a class="nav-link <?= $_GET['page'] == 'dashboard' ? 'active' : '' ?>" href="?page=dashboard">
+                <a class="nav-link <?= $currentPage == 'dashboard' ? 'active' : '' ?>" href="?page=dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed <?= $_GET['page'] == 'stok' || $_GET['page'] == 'trackingSerialNumber' || $_GET['page'] == 'laporanMasuk' || $_GET['page'] == 'laporanKeluar' || $_GET['page'] == 'laporanReturn' || $_GET['page'] == 'laporanPemakaianTabung' || $_GET['page'] == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                <a class="nav-link collapsed <?= $currentPage == 'stok' || $currentPage == 'trackingSerialNumber' || $currentPage == 'laporanMasuk' || $currentPage == 'laporanKeluar' || $currentPage == 'laporanReturn' || $currentPage == 'laporanPemakaianTabung' || $currentPage == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Laporan</span>

@@ -51,174 +51,121 @@
                                 include "dashboard.php";
                                 break;
 
-                            case "dashboard";
+                            case "dashboard":
                                 $title = 'Dashboard';
                                 include 'dashboard.php';
                                 break;
 
                             // Master Data
-                            case "master";;
+                            case "master":
                                 include '../../master/show.php';
                                 break;
 
                             // Bidang master
-                            case "bidangAdd";
+                            case "bidangAdd":
                                 $title = 'Tambah Data Bidang';
                                 include '../../master/bidang/add.php';
                                 break;
 
-                            case "bidangEdit";
+                            case "bidangEdit":
                                 $title = 'Edit Data Bidang';
                                 include '../../master/bidang/edit.php';
                                 break;
 
-                            case "bidangDelete";
+                            case "bidangDelete":
                                 include '../../master/bidang/delete.php';
                                 break;
 
                             // Program master
-                            case "programAdd";
+                            case "programAdd":
                                 $title = 'Tambah Data Program';
                                 include '../../master/program/add.php';
                                 break;
 
-                            case "programEdit";
+                            case "programEdit":
                                 $title = 'Edit Data program';
                                 include '../../master/program/edit.php';
                                 break;
 
-                            case "programDelete";
+                            case "programDelete":
                                 include '../../master/program/delete.php';
                                 break;
 
                             // Srogram master
-                            case "satuanAdd";
+                            case "satuanAdd":
                                 $title = 'Tambah Data Satuan';
                                 include '../../master/satuan/add.php';
                                 break;
 
-                            case "satuanEdit";
+                            case "satuanEdit":
                                 $title = 'Edit Data satuan';
                                 include '../../master/satuan/edit.php';
                                 break;
 
-                            case "satuanDelete";
+                            case "satuanDelete":
                                 include '../../master/satuan/delete.php';
                                 break;
 
                             //  Verifikasi Usulan
-                            case "usulan";
+                            case "usulan":
                                 $title = 'Verifikasi Usulan';
                                 include '../../usulan/show.php';
                                 break;
 
-                            case "oksigenReturnAdd";
-                                $title = 'Tambah Oksigen Return';
-                                include '../../oksigenreturn/add.php';
+                            // Penetapan Rencana
+                            case "penetapanRencana":
+                                $title = 'Penetapan Perencanaan Pembangunan';
+                                include '../../penetapan-rencana/show.php';
                                 break;
 
-                            case "oksigenReturnDelete";
-                                include '../../oksigenreturn/delete.php';
+                            case "tetapkan":                        
+                                include '../../penetapan-rencana/tetapkan.php';
                                 break;
-
-                            // Oksigen masuk
-                            case "oksigenMasuk";
-                                $title = 'Data Tabung Masuk';
-                                include '../../oksigenmasuk/show.php';
-                                break;
-
-                            case "oksigenMasukEdit";
-                                $title = 'Edit Data Masuk';
-                                include '../../oksigenmasuk/edit.php';
-                                break;
-
-                            case "oksigenMasukDelete";
-                                include '../../oksigenmasuk/delete.php';
-                                break;
-
-                            // Oksigen keluar
-                            case "oksigenKeluar";
-                                $title = 'Data Tabung Keluar';
-                                include '../../oksigenkeluar/show.php';
-                                break;
-
-                            case "oksigenKeluarAccepted";
-                                include '../../oksigenkeluar/accept.php';
-                                break;
-
-                            case "oksigenKeluarRejected";
-                                include '../../oksigenkeluar/reject.php';
-                                break;
-
-                            case "oksigenKeluarDelete";
-                                include '../../oksigenkeluar/delete.php';
-                                break;
+                            
 
                             //Laporan
-                            case "laporanMasuk";
+                            case "laporanMasuk":
                                 $title = 'Laporan Tabung Masuk';
                                 include '../../laporan/masuk.php';
                                 break;
 
-                            case "laporanKeluar";
+                            case "laporanKeluar":
                                 $title = 'Laporan Tabung Keluar';
                                 include '../../laporan/keluar.php';
                                 break;
 
-                            case "laporanReturn";
+                            case "laporanReturn":
                                 $title = 'Laporan Tabung Return';
                                 include '../../laporan/return.php';
                                 break;
 
-                            case "laporanPemakaianTabung";
+                            case "laporanPemakaianTabung":
                                 $title = 'Laporan Pemakaian Tabung';
                                 include '../../laporan/pemakaianTabung.php';
                                 break;
 
-                            case "laporanPemakaianDivisi";
+                            case "laporanPemakaianDivisi":
                                 $title = 'Laporan Pemakaian Divisi';
                                 include '../../laporan/pemakaianDivisi.php';
                                 break;
 
-                            //  Oksigen stok
-                            case "stok";
-                                $title = 'Laporan Stok Tabung';
-                                include '../../stok/show.php';
-                                break;
-
-                            case "stokDetail";
-                                $title = 'Data Stok Detail';
-                                include '../../stok/detail.php';
-                                break;
-
-                            case "stokPrint";
-                                include '../../stok/print.php';
-                                break;
-
-                            // Tracking Serial Number
-                            case "trackingSerialNumber";
-                                $title = 'Laporan Serial Number';
-                                include '../../serialnumber/show.php';
-                                break;
-
                             // user
-
-                            case "user";
+                            case "user":
                                 $title = 'Data User';
                                 include '../../user/show.php';
                                 break;
 
-                            case "userAdd";
+                            case "userAdd":
                                 $title = 'Tambah Data User';
                                 include '../../user/add.php';
                                 break;
 
-                            case "userEdit";
+                            case "userEdit":
                                 $title = 'Edit Data User';
                                 include '../../user/edit.php';
                                 break;
 
-                            case "userDelete";
+                            case "userDelete":
                                 include '../../user/delete.php';
                                 break;
                         }

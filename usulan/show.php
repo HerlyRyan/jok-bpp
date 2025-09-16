@@ -55,12 +55,12 @@ $totalUsulanMasuk = mysqli_num_rows($queryUsulanMasuk);
                                         <a data-type="terima"
                                             data-id="<?= $data['usulan_id'] ?>"
                                             data-user="<?= $_SESSION['user_id'] ?>"
-                                            class="btn btn-success btn-sm btn-action">Terima</a>
+                                            class="btn btn-success btn-sm btn-verification">Terima</a>
 
                                         <a data-type="tolak"
                                             data-id="<?= $data['usulan_id'] ?>"
                                             data-user="<?= $_SESSION['user_id'] ?>"
-                                            class="btn btn-danger btn-sm btn-action">Tolak</a>
+                                            class="btn btn-danger btn-sm btn-verification">Tolak</a>
 
                                     </td>
                                 </tr>
