@@ -26,7 +26,7 @@ if (isset($_POST['login'])) {
                 if ($_SESSION['role'] == 'user_desa') {
                     header('Location: users/user-desa/?page=dashboard');
                 } else if ($_SESSION['role'] == 'pimpinan') {
-                    header('Location: users/pimpinan/?page=dashboard');
+                    header('Location: users/pimpinan/?page=laporanUsulanMasuk');
                 } else {
                     header('Location: users/admin/?page=dashboard');
                 }

@@ -133,29 +133,24 @@
                                 break;
 
                             //Laporan
-                            case "laporanMasuk":
-                                $title = 'Laporan Tabung Masuk';
-                                include '../../laporan/masuk.php';
+                            case "laporanUsulanMasuk":
+                                $title = 'Laporan Usulan Masuk';
+                                include '../../laporan/usulan-masuk/show.php';
                                 break;
 
-                            case "laporanKeluar":
-                                $title = 'Laporan Tabung Keluar';
-                                include '../../laporan/keluar.php';
+                            case "laporanVerifikasiUsulan":
+                                $title = 'Laporan Verifikasi Usulan';
+                                include '../../laporan/verifikasi/show.php';
                                 break;
 
-                            case "laporanReturn":
-                                $title = 'Laporan Tabung Return';
-                                include '../../laporan/return.php';
+                            case "laporanRencanaPembangunan":
+                                $title = 'Laporan Rencana Pembangunan';
+                                include '../../laporan/rencana-pembangunan/show.php';
                                 break;
 
-                            case "laporanPemakaianTabung":
-                                $title = 'Laporan Pemakaian Tabung';
-                                include '../../laporan/pemakaianTabung.php';
-                                break;
-
-                            case "laporanPemakaianDivisi":
-                                $title = 'Laporan Pemakaian Divisi';
-                                include '../../laporan/pemakaianDivisi.php';
+                            case "laporanRekapUsulan":
+                                $title = 'Laporan Rekap Status Usulan';
+                                include '../../laporan/rekap-status-usulan/show.php';
                                 break;
 
                             // user

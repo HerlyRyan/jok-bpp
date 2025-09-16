@@ -57,22 +57,18 @@ if ($_SESSION['status'] == 'login') {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed <?= $currentPage == 'stok' || $currentPage == 'trackingSerialNumber' || $currentPage == 'laporanMasuk' || $currentPage == 'laporanKeluar' || $currentPage == 'laporanReturn' || $currentPage == 'laporanPemakaianTabung' || $currentPage == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                <a class="nav-link collapsed <?= $currentPage == 'laporanUsulanMasuk' || $currentPage == 'laporanVerifikasiUsulan' || $currentPage == 'laporanRencanaPembangunan' || $currentPage == 'laporanRekapUsulan' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Laporan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?page=laporanMasuk">Tabung Masuk</a>
-                        <a class="collapse-item" href="?page=laporanKeluar">Tabung Keluar</a>
-                        <a class="collapse-item" href="?page=laporanReturn">Tabung Return</a>
-                        <a class="collapse-item" href="?page=stok">Stok Tabung</a>
-                        <a class="collapse-item" href="?page=trackingSerialNumber">Serial Number</a>
-                        <a class="collapse-item" href="?page=laporanPemakaianTabung">Pemakaian Tabung</a>
-                        <a class="collapse-item" href="?page=laporanPemakaianDivisi">Pemakaian Divisi</a>
+                        <a class="collapse-item" href="?page=laporanUsulanMasuk">Usulan Masuk</a>
+                        <a class="collapse-item" href="?page=laporanVerifikasiUsulan">Verifikasi Usulan</a>
+                        <a class="collapse-item" href="?page=laporanRencanaPembangunan">Rencana Pembangunan</a>
+                        <a class="collapse-item" href="?page=laporanRekapUsulan">Rekap Status Usulan</a>
                     </div>
-                </div>
             </li>
 
             <li class="nav-item">
@@ -105,28 +101,24 @@ if ($_SESSION['status'] == 'login') {
         <?php } ?>
         <?php if ($_SESSION['role'] == 'pimpinan') {
         ?>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link <?= $currentPage == 'dashboard' ? 'active' : '' ?>" href="?page=dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-            </li>
+            </li> -->
             <li class="nav-item">
-                <a class="nav-link collapsed <?= $currentPage == 'stok' || $currentPage == 'trackingSerialNumber' || $currentPage == 'laporanMasuk' || $currentPage == 'laporanKeluar' || $currentPage == 'laporanReturn' || $currentPage == 'laporanPemakaianTabung' || $currentPage == 'laporanPemakaianDivisi' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                <a class="nav-link collapsed <?= $currentPage == 'laporanUsulanMasuk' || $currentPage == 'laporanVerifikasiUsulan' || $currentPage == 'laporanRencanaPembangunan' || $currentPage == 'laporanRekapUsulan' ? 'active' : '' ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Laporan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?page=laporanMasuk">Tabung Masuk</a>
-                        <a class="collapse-item" href="?page=laporanKeluar">Tabung Keluar</a>
-                        <a class="collapse-item" href="?page=laporanReturn">Tabung Return</a>
-                        <a class="collapse-item" href="?page=stok">Stok Tabung</a>
-                        <a class="collapse-item" href="?page=trackingSerialNumber">Serial Number</a>
-                        <a class="collapse-item" href="?page=laporanPemakaianTabung">Pemakaian Tabung</a>
-                        <a class="collapse-item" href="?page=laporanPemakaianDivisi">Pemakaian Divisi</a>
+                        <a class="collapse-item" href="?page=laporanUsulanMasuk">Usulan Masuk</a>
+                        <a class="collapse-item" href="?page=laporanVerifikasiUsulan">Verifikasi Usulan</a>
+                        <a class="collapse-item" href="?page=laporanRencanaPembangunan">Rencana Pembangunan</a>
+                        <a class="collapse-item" href="?page=laporanRekapUsulan">Rekap Status Usulan</a>
                     </div>
-                </div>
             </li>
         <?php } ?>
 
