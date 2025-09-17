@@ -6,7 +6,7 @@ $queryUsulanMasuk = mysqli_query($con, "SELECT * FROM usulan WHERE status_peneta
 $totalUsulanMasuk = mysqli_num_rows($queryUsulanMasuk);
 
 // Usulan Diverifikasi
-$queryUsulanDiverifikasi = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Diverifikasi' AND user_id = $user_id");
+$queryUsulanDiverifikasi = mysqli_query($con, "SELECT * FROM usulan WHERE status_penetapan = 'Diverifikasi' OR status_penetapan = 'Ditetapkan' AND user_id = $user_id");
 $totalUsulanDiverifikasi = mysqli_num_rows($queryUsulanDiverifikasi);
 
 // Usulan Ditolak
