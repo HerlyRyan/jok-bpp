@@ -8,12 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Aplikasi Bapperida Pulang Pisau</title>
-    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.bootstrap4.css">
@@ -31,21 +31,21 @@
     <div id="wrapper">
 
         <?php
-        include_once '../layout/menu.php';
-        include_once '../function.php';
-        include_once '../logincheck.php';
+        include_once '../../layout/menu.php';
+        include_once '../../function.php';
+        include_once '../../logincheck.php';
         ?>
         <!-- main content -->
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?php include_once '../layout/navbar.php' ?>
+                <?php include_once '../../layout/navbar.php' ?>
 
                 <!-- section content -->
                 <div class="container-fluid">
                     <?php
-                    include_once '../connection.php';
+                    include_once '../../connection.php';
                     error_reporting(0);
-                    if ($_SESSION['level'] == 2) {
+                    if ($_SESSION['role'] == 'pimpinan') {
                         switch ($_GET['page']) {
                             default:
                                 include "dashboard.php";
@@ -57,50 +57,24 @@
                                 break;
 
                             //Laporan
-                            case "laporanMasuk";
-                                $title = 'Laporan Tabung Masuk';
-                                include '../laporan/masuk.php';
+                            case "laporanUsulanMasuk":
+                                $title = 'Laporan Usulan Masuk';
+                                include '../../laporan/usulan-masuk/show.php';
                                 break;
 
-                            case "laporanKeluar";
-                                $title = 'Laporan Tabung Keluar';
-                                include '../laporan/keluar.php';
+                            case "laporanVerifikasiUsulan":
+                                $title = 'Laporan Verifikasi Usulan';
+                                include '../../laporan/verifikasi/show.php';
                                 break;
 
-                            case "laporanReturn";
-                                $title = 'Laporan Tabung Return';
-                                include '../laporan/return.php';
+                            case "laporanRencanaPembangunan":
+                                $title = 'Laporan Rencana Pembangunan';
+                                include '../../laporan/rencana-pembangunan/show.php';
                                 break;
 
-                            case "laporanPemakaianTabung";
-                                $title = 'Laporan Pemakaian Tabung';
-                                include '../laporan/pemakaianTabung.php';
-                                break;
-
-                            case "laporanPemakaianDivisi";
-                                $title = 'Laporan Pemakaian Divisi';
-                                include '../laporan/pemakaianDivisi.php';
-                                break;
-
-                            //  Oksigen stok
-                            case "stok";
-                                $title = 'Laporan Stok Tabung';
-                                include '../stok/show.php';
-                                break;
-
-                            case "stokDetail";
-                                $title = 'Data Stok Detail';
-                                include '../stok/detail.php';
-                                break;
-
-                            case "stokPrint";
-                                include '../stok/print.php';
-                                break;
-
-                            // Tracking Serial Number
-                            case "trackingSerialNumber";
-                                $title = 'Laporan Serial Number';
-                                include '../serialnumber/show.php';
+                            case "laporanRekapUsulan":
+                                $title = 'Laporan Rekap Status Usulan';
+                                include '../../laporan/rekap-status-usulan/show.php';
                                 break;
                         }
                     }
@@ -109,7 +83,7 @@
                 </div>
             </div>
 
-            <?php include_once '../layout/footer.php' ?>
+            <?php include_once '../../layout/footer.php' ?>
         </div>
     </div>
 
@@ -127,16 +101,16 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Pilih "Logout" di bawah jika Anda siap untuk mengakhiri sesi Anda saat ini.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../logout.php">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
+                    <a class="btn btn-primary" href="../../logout.php">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php include_once '../layout/js.php' ?>
+    <?php include_once '../../layout/js.php' ?>
     <?php
     sweetConfirm()
     ?>

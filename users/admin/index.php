@@ -45,7 +45,7 @@
                     <?php
                     include_once '../../connection.php';
                     error_reporting(0);
-                    if ($_SESSION['level'] == 0) {
+                    if ($_SESSION['role'] == 'admin') {
                         switch ($_GET['page']) {
                             default:
                                 include "dashboard.php";
