@@ -1,17 +1,18 @@
 <?php
 include 'connection.php';
+include 'function.php';
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $passwordKonfirmasi = $_POST['passwordKonfirmasi'];
-    $level = 0;
+    $role = 'user_desa';
     $passHash = password_hash($password, PASSWORD_DEFAULT);
-    
-    if ($password === $passwordKonfirmasi) {
-        mysqli_query($con, "INSERT INTO user(username,password,level) VALUES('$username','$passHash','$level')"); 
-        echo "<script>window.location.href = './';</script>";
 
+    if ($password === $passwordKonfirmasi) {
+        mysqli_query($con, "INSERT INTO users (username, password, role) VALUES('$username', '$passHash', '$role')");
+        // echo "<script>window.location.href = './';</script>";
+        sweetAlert("success", "Pendaftaran Berhasil", "./");
     } else {
         $error = true;
     }
@@ -21,6 +22,7 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,16 +45,16 @@ if (isset($_POST['submit'])) {
             <div class="col-xl-6 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                    
+
                         <div class="text-center text-primary mt-4">
                             <i class="fas fa-3x fa-lock"></i>
-                        </div>                
-                    
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="p-4">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Register Administrator</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Register User</h1>
                                     </div>
                                     <form class="user" method="post">
                                         <div class="form-group">
@@ -61,23 +63,23 @@ if (isset($_POST['submit'])) {
 
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control form-control-user" placeholder="masukan password...">
-                                        </div> 
+                                        </div>
 
                                         <div class="form-group">
                                             <input type="password" name="passwordKonfirmasi" class="form-control form-control-user" placeholder="masukan konfirmasi password...">
-                                        </div> 
+                                        </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block" name="submit">Simpan</button>
                                     </form>
                                 </div>
                             </div>
-                        </div>  
-                                                
+                        </div>
+
                         <?php if (isset($error)) : ?>
-                            <div class="col-lg-12"> 
+                            <div class="col-lg-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <strong>Registarsi gagal</strong>, Periksa kembali password
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                        <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div>
@@ -93,4 +95,5 @@ if (isset($_POST['submit'])) {
     <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="assets/js/sb-admin-2.min.js"></script>
 </body>
+
 </html>
