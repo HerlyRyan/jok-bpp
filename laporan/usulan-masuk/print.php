@@ -55,10 +55,12 @@ $result = mysqli_query($con, $query);
             float: left;
             width: 80px;
             height: 80px;
-            border: 1px solid #000;
             margin-right: 15px;
-            text-align: center;
-            line-height: 80px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
         }
 
         .judul-laporan {
@@ -101,11 +103,13 @@ $result = mysqli_query($con, $query);
 <body onload="window.print()">
 
     <div class="header">
-        <div class="logo">LOGO</div>
+        <div class="logo">
+            <img src="../../assets/img/logo-bapperida-pulang-pisau.png" alt="Logo Bapperida">
+        </div>
         <h2>PEMERINTAH KABUPATEN PULANG PISAU</h2>
-        <h3>DINAS PERENCANAAN PEMBANGUNAN DAERAH (BAPPEDA)</h3>
+        <h3>BADAN PERENCANAAN PEMBANGUNAN DAERAH, RISET DAN INOVASI</h3>
         <p>Jl. Mentaren I, Kec. Kahayan Hilir, Kab. Pulang Pisau, Kalimantan Tengah</p>
-        <p>Telp: xxxxxxxxxx Fax: xxxxxxxxxx</p>
+        <p>Telp: (0513) 2021137</p>
         <div class="clearfix"></div>
         <hr>
     </div>
@@ -126,28 +130,30 @@ $result = mysqli_query($con, $query);
         <tbody>
             <?php
             $no = 1;
-            while ($data = mysqli_fetch_array($result)) {
-                echo "<tr>
-                        <td>{$no}</td>
-                        <td>" . htmlspecialchars(ucfirst($data['judul'])) . "</td>
-                        <td>" . htmlspecialchars(ucfirst($data['nama_bidang'])) . "</td>
-                        <td>" . htmlspecialchars(ucfirst($data['nama_program'])) . "</td>
-                        <td>" . htmlspecialchars(ucfirst($data['volume'])) . "</td>
-                        <td>{$data['status_penetapan']}</td>
-                      </tr>";
-                $no++;
-            }
-            if ($no == 1) {
-                echo "<tr><td colspan='6'>Tidak ada data</td></tr>";
+            if (mysqli_num_rows($result) > 0) {
+                while ($data = mysqli_fetch_array($result)) {
+                    echo "<tr>
+                            <td>{$no}</td>
+                            <td>" . htmlspecialchars(ucfirst($data['judul'])) . "</td>
+                            <td>" . htmlspecialchars(ucfirst($data['nama_bidang'])) . "</td>
+                            <td>" . htmlspecialchars(ucfirst($data['nama_program'])) . "</td>
+                            <td>" . htmlspecialchars(ucfirst($data['volume'])) . "</td>
+                            <td>{$data['status_penetapan']}</td>
+                          </tr>";
+                    $no++;
+                }
+            } else {
+                echo "<tr><td colspan='6'>Tidak ada data yang ditemukan</td></tr>";
             }
             ?>
         </tbody>
     </table>
 
     <div class="ttd">
-        Pulang Pisau, ...... Juni 2025 <br>
-        Kepala Dinas Bappeda <br><br><br><br>
-        (__________________)
+        Pulang Pisau, <?php echo date('d F Y'); ?> <br>
+        Kepala Badan <br><br><br><br>
+        <b><u>NAMA KEPALA BADAN</u></b><br>
+        NIP. ......................
     </div>
 
 </body>

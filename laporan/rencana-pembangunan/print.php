@@ -54,10 +54,12 @@ $result = mysqli_query($con, $query);
             float: left;
             width: 80px;
             height: 80px;
-            border: 1px solid #000;
             margin-right: 15px;
-            text-align: center;
-            line-height: 80px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
         }
 
         .judul-laporan {
@@ -100,7 +102,9 @@ $result = mysqli_query($con, $query);
 <body onload="window.print()">
 
     <div class="header">
-        <div class="logo">LOGO</div>
+        <div class="logo">
+            <img src="../../assets/img/logo-bapperida-pulang-pisau.png" alt="Logo Bapperida">
+        </div>
         <h2>PEMERINTAH KABUPATEN PULANG PISAU</h2>
         <h3>DINAS PERENCANAAN PEMBANGUNAN DAERAH (BAPPEDA)</h3>
         <p>Jl. Mentaren I, Kec. Kahayan Hilir, Kab. Pulang Pisau, Kalimantan Tengah</p>
