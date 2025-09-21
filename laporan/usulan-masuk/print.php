@@ -104,7 +104,7 @@ $result = mysqli_query($con, $query);
 
     <div class="header">
         <div class="logo">
-            <img src="../../assets/img/logo-bapperida-pulang-pisau.png" alt="Logo Bapperida">
+            <img src="../../assets/img/logo-bapperida-pulang-pisau.jpg" alt="Logo Bapperida">
         </div>
         <h2>PEMERINTAH KABUPATEN PULANG PISAU</h2>
         <h3>BADAN PERENCANAAN PEMBANGUNAN DAERAH, RISET DAN INOVASI</h3>
