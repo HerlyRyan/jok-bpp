@@ -83,7 +83,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
-                        <th>Nama Kegiatan</th>
+                        <th>Judul Usulan</th>
                         <th>Bidang</th>
                         <th>Status</th>
                         <th>Keterangan</th>

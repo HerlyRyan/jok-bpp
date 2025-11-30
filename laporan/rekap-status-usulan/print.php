@@ -125,13 +125,13 @@ $result = mysqli_query($con, $query);
         <hr>
     </div>
 
-    <div class="judul-laporan">Laporan Usulan Masuk</div>
+    <div class="judul-laporan">Laporan Rekap Status Usulan</div>
 
     <table>
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Kegiatan</th>
+                <th>Judul Usulan</th>
                 <th>Bidang</th>
                 <th>Status</th>
                 <th>Keterangan</th>

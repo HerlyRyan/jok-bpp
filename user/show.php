@@ -9,7 +9,7 @@
 
                 <a href="?page=userAdd" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
 
-                <a href="../user/print.php" target="_blank" class="btn 
+                <a href="./print.php" target="_blank" class="btn 
                 btn-success"><i class="fas fa-print"></i> Cetak</a>
                 <hr>
 

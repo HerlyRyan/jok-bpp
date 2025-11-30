@@ -92,7 +92,6 @@ $totalPengaduan = mysqli_num_rows($queryPengaduan);
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Judul Usulan</th>
-                                <th>Tanggal</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -110,7 +109,6 @@ $totalPengaduan = mysqli_num_rows($queryPengaduan);
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?php echo ucfirst($data['judul']); ?></td>
-                                    <td><?php echo $data['tanggal']; ?> </td>
                                     <td>
                                         <?php
                                         $status = $data['status_penetapan'];

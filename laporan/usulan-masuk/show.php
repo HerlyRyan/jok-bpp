@@ -87,13 +87,23 @@
                         <th>Bidang</th>
                         <th>Program</th>
                         <th>Volume</th>
+                        <th>Satuan</th>
                         <th>Status Usulan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     // Base query
-                    $query = "SELECT usulan.*, bidang.nama_bidang, program.nama_program FROM usulan JOIN bidang ON usulan.bidang_id = bidang.bidang_id JOIN program ON usulan.program_id = program.program_id WHERE status_penetapan = 'Masuk'";
+                    $query = "SELECT 
+                        usulan.*, 
+                        bidang.nama_bidang, 
+                        program.nama_program, 
+                        satuan.nama_satuan 
+                    FROM usulan 
+                    JOIN bidang ON usulan.bidang_id = bidang.bidang_id 
+                    JOIN program ON usulan.program_id = program.program_id 
+                    JOIN satuan ON usulan.usulan_id = satuan.satuan_id
+                    WHERE status_penetapan = 'Masuk'";
 
                     // Add filters
                     if (!empty($_GET['tahun'])) {

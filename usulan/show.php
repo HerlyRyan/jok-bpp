@@ -36,21 +36,25 @@ $totalUsulanMasuk = mysqli_num_rows($queryUsulanMasuk);
                         <thead class="thead-light">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Kegiatan</th>
-                                <th>Pengusul</th>
+                                <th>Judul Usulan</th>
+                                <th>Bidang</th>
+                                <th>Program</th>
+                                <th>Volume</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $result = mysqli_query($con, "SELECT usulan.usulan_id, usulan.judul as judul, users.username as pengusul FROM usulan JOIN users ON usulan.user_id = users.user_id WHERE status_penetapan = 'Masuk'");
+                            $result = mysqli_query($con, "SELECT usulan.usulan_id, usulan.judul as judul, bidang.nama_bidang as bidang, program.nama_program as program, volume FROM usulan JOIN bidang ON usulan.bidang_id = bidang.bidang_id JOIN program ON usulan.program_id = program.program_id WHERE status_penetapan = 'Masuk'");
                             $no = 1;
                             while ($data = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= ucfirst($data['judul']); ?></td>
-                                    <td><?= ucfirst($data['pengusul']); ?></td>
+                                    <td><?= ucfirst($data['judul']); ?></td>
+                                    <td><?= ucfirst($data['judul']); ?></td>
+                                    <td><?= ucfirst($data['judul']); ?></td>
                                     <td>
                                         <a data-type="terima"
                                             data-id="<?= $data['usulan_id'] ?>"

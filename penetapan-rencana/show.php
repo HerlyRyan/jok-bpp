@@ -75,10 +75,9 @@
                     <tr>
                         <th>No</th>
                         <th>Judul Usulan</th>
-                        <th>Deskripsi</th>
                         <th>Bidang</th>
                         <th>Program</th>
-                        <th>Tahun</th>
+                        <th>Volume</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -90,7 +89,7 @@
                                 u.judul AS usulan_judul,
                                 b.nama_bidang AS nama_bidang,
                                 p.nama_program AS nama_program,
-                                p.deskripsi AS deskripsi
+                                u.volume as volume
                             FROM rencana_pembangunan rp
                             JOIN usulan u  ON rp.usulan_id  = u.usulan_id
                             JOIN bidang b  ON u.bidang_id   = b.bidang_id
@@ -117,11 +116,10 @@
                     ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= htmlspecialchars(ucfirst($data['usulan_judul'])); ?></td>
-                            <td><?= htmlspecialchars(ucfirst($data['deskripsi'])); ?></td>
+                            <td><?= htmlspecialchars(ucfirst($data['usulan_judul'])); ?></td>                            
                             <td><?= htmlspecialchars(ucfirst($data['nama_bidang'])); ?></td>
                             <td><?= htmlspecialchars(ucfirst($data['nama_program'])); ?></td>
-                            <td><?= $data['tahun']; ?></td>
+                            <td><?= $data['volume']; ?></td>
                             <td>
                                 <a data-toggle="tooltip" data-placement="top" class="btn btn-success btn-sm btn-action" href="#" data-type="tetapkan" data-url="?page=tetapkanRencana&id=<?php echo $data['id']; ?>"><i class="fa fa-check fa-sm"></i> Tetapkan</a>
                             </td>

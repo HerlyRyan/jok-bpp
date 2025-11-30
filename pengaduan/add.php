@@ -3,11 +3,9 @@ if (isset($_POST['submit'])) {
     $user_id        = $_POST['user_id'];
     $judul          = $_POST['judul'];
     $isi_pengaduan  = $_POST['isi_pengaduan'];
+    $tanggal        = $_POST['tanggal_pengaduan'];
     $status         = 'Masuk';
-    $tanggapan      = 'Belum ada tanggapan';
-
-    // ambil tanggal sekarang
-    $tanggal = date('Y-m-d'); // format DATE
+    $tanggapan      = 'Belum ada tanggapan';    
 
     $result = mysqli_query($con, "
         INSERT INTO pengaduan(user_id, judul, isi_pengaduan, status, tanggapan, tanggal_pengaduan) 
@@ -47,6 +45,15 @@ if (isset($_POST['submit'])) {
                             <label for="isi_pengaduan" class="col-sm-4 col-form-label">Isi Pengaduan</label>
                             <div class="col-sm-12">
                                 <input class="form-control" name="isi_pengaduan" placeholder="Masukan Isi Pengaduan..." required></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <label for="tanggal_pengaduan" class="col-sm-4 col-form-label">Tanggal Pengaduan</label>
+                            <div class="col-sm-12">
+                                <input type="date" class="form-control" name="tanggal_pengaduan" placeholder="Masukan Isi Pengaduan..." required></input>
                             </div>
                         </div>
                     </div>

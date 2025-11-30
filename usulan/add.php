@@ -77,9 +77,9 @@ if (isset($_POST['submit'])) {
 
                     <div class="mb-3 row">
                         <div class="col">
-                            <label for="judul" class="col-sm-4 col-form-label">Nama Kegiatan</label>
+                            <label for="judul" class="col-sm-4 col-form-label">Judul Usulan</label>
                             <div class="col-sm-12">
-                                <input class="form-control" name="judul" placeholder="Masukan Nama Kegiatan..." required></input>
+                                <input class="form-control" name="judul" placeholder="Masukan Judul Usulan..." required></input>
                             </div>
                         </div>
                     </div>

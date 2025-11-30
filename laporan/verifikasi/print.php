@@ -7,7 +7,16 @@ $bidang  = isset($_GET['bidang']) ? intval($_GET['bidang']) : '';
 $periode = isset($_GET['periode']) ? intval($_GET['periode']) : '';
 
 // Base query
-$query = "SELECT verifikasi.*, usulan.judul, bidang.nama_bidang FROM verifikasi JOIN usulan ON verifikasi.usulan_id = usulan.usulan_id JOIN bidang ON usulan.bidang_id = bidang.bidang_id";
+$query = "SELECT 
+        verifikasi.*, 
+        usulan.judul, 
+        bidang.nama_bidang,
+        program.nama_program,
+        usulan.volume
+    FROM verifikasi 
+    JOIN usulan ON verifikasi.usulan_id = usulan.usulan_id 
+    JOIN bidang ON usulan.bidang_id = bidang.bidang_id
+    JOIN program ON usulan.program_id = program.program_id";
 
 // Filter tambahan
 if (!empty($_GET['tahun'])) {
@@ -113,13 +122,16 @@ $result = mysqli_query($con, $query);
         <hr>
     </div>
 
-    <div class="judul-laporan">Laporan Usulan Masuk</div>
+    <div class="judul-laporan">Laporan Verifikasi Usulan</div>
 
     <table>
         <thead>
             <tr>
                 <th>No</th>
                 <th>Judul Usulan</th>
+                <th>Bidang</th>
+                <th>Program</th>
+                <th>Volume</th>
                 <th>Status Verifikasi</th>
             </tr>
         </thead>
@@ -130,6 +142,9 @@ $result = mysqli_query($con, $query);
                 echo "<tr>
                         <td>{$no}</td>
                         <td>" . htmlspecialchars(ucfirst($data['judul'])) . "</td>
+                        <td>" . htmlspecialchars(ucfirst($data['nama_bidang'])) . "</td>
+                        <td>" . htmlspecialchars(ucfirst($data['nama_program'])) . "</td>
+                        <td>{$data['volume']}</td>
                         <td>{$data['hasil']}</td>
                       </tr>";
                 $no++;

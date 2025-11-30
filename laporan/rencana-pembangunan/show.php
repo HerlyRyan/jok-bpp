@@ -84,7 +84,9 @@
                     <tr>
                         <th>No</th>
                         <th>Judul Usulan</th>
+                        <th>Bidang</th>
                         <th>Program</th>
+                        <th>Volume</th>
                         <th>Status Penetapan</th>
                     </tr>
                 </thead>
@@ -95,7 +97,8 @@
                                 rp.*,
                                 u.judul AS usulan_judul,
                                 b.nama_bidang AS nama_bidang,
-                                p.nama_program AS nama_program
+                                p.nama_program AS nama_program,
+                                u.volume as volume
                             FROM rencana_pembangunan rp
                             JOIN usulan u  ON rp.usulan_id  = u.usulan_id
                             JOIN bidang b  ON u.bidang_id   = b.bidang_id
@@ -123,7 +126,9 @@
                         <tr>
                             <td><?= $no++; ?></td>
                             <td><?= htmlspecialchars(ucfirst($data['usulan_judul'])); ?></td>
+                            <td><?= htmlspecialchars(ucfirst($data['nama_bidang'])); ?></td>
                             <td><?= htmlspecialchars(ucfirst($data['nama_program'])); ?></td>
+                            <td><?= $data['volume']; ?></td>
                             <td><?= $data['status_akhir']; ?></td>
                         </tr>
                     <?php } ?>

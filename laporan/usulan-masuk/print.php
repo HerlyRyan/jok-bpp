@@ -7,11 +7,16 @@ $bidang  = isset($_GET['bidang']) ? intval($_GET['bidang']) : '';
 $periode = isset($_GET['periode']) ? intval($_GET['periode']) : '';
 
 // Base query
-$query = "SELECT usulan.*, bidang.nama_bidang, program.nama_program 
-          FROM usulan 
-          JOIN bidang ON usulan.bidang_id = bidang.bidang_id 
-          JOIN program ON usulan.program_id = program.program_id 
-          WHERE status_penetapan = 'Masuk'";
+$query = "SELECT 
+        usulan.*, 
+        bidang.nama_bidang, 
+        program.nama_program, 
+        satuan.nama_satuan 
+    FROM usulan 
+    JOIN bidang ON usulan.bidang_id = bidang.bidang_id 
+    JOIN program ON usulan.program_id = program.program_id 
+    JOIN satuan ON usulan.usulan_id = satuan.satuan_id
+    WHERE status_penetapan = 'Masuk'";
 
 // Filter tambahan
 if (!empty($tahun)) {
@@ -124,6 +129,7 @@ $result = mysqli_query($con, $query);
                 <th>Bidang</th>
                 <th>Program</th>
                 <th>Volume</th>
+                <th>Satuan</th>
                 <th>Status Usulan</th>
             </tr>
         </thead>
@@ -143,7 +149,7 @@ $result = mysqli_query($con, $query);
                     $no++;
                 }
             } else {
-                echo "<tr><td colspan='6'>Tidak ada data yang ditemukan</td></tr>";
+                echo "<tr><td colspan='7'>Tidak ada data yang ditemukan</td></tr>";
             }
             ?>
         </tbody>
