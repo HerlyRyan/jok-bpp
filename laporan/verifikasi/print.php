@@ -12,11 +12,13 @@ $query = "SELECT
         usulan.judul, 
         bidang.nama_bidang,
         program.nama_program,
-        usulan.volume
+        usulan.volume,
+        satuan.nama_satuan as satuan
     FROM verifikasi 
     JOIN usulan ON verifikasi.usulan_id = usulan.usulan_id 
     JOIN bidang ON usulan.bidang_id = bidang.bidang_id
-    JOIN program ON usulan.program_id = program.program_id";
+    JOIN program ON usulan.program_id = program.program_id
+    JOIN satuan ON satuan.satuan_id = usulan.satuan_id";
 
 // Filter tambahan
 if (!empty($_GET['tahun'])) {
@@ -132,6 +134,8 @@ $result = mysqli_query($con, $query);
                 <th>Bidang</th>
                 <th>Program</th>
                 <th>Volume</th>
+                <th>Satuan</th>
+                <th>Tanggal</th>
                 <th>Status Verifikasi</th>
             </tr>
         </thead>
@@ -145,6 +149,8 @@ $result = mysqli_query($con, $query);
                         <td>" . htmlspecialchars(ucfirst($data['nama_bidang'])) . "</td>
                         <td>" . htmlspecialchars(ucfirst($data['nama_program'])) . "</td>
                         <td>{$data['volume']}</td>
+                        <td>{$data['satuan']}</td>
+                        <td>{$data['tanggal']}</td>
                         <td>{$data['hasil']}</td>
                       </tr>";
                 $no++;

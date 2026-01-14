@@ -40,32 +40,67 @@ $totalUsulanMasuk = mysqli_num_rows($queryUsulanMasuk);
                                 <th>Bidang</th>
                                 <th>Program</th>
                                 <th>Volume</th>
+                                <th>Satuan</th>
+                                <th>Tanggal</th>
+                                <th>Pengusul</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $result = mysqli_query($con, "SELECT usulan.usulan_id, usulan.judul as judul, bidang.nama_bidang as bidang, program.nama_program as program, volume FROM usulan JOIN bidang ON usulan.bidang_id = bidang.bidang_id JOIN program ON usulan.program_id = program.program_id WHERE status_penetapan = 'Masuk'");
+                            $result = mysqli_query($con, "SELECT 
+                                    usulan.usulan_id, 
+                                    usulan.judul as judul, 
+                                    bidang.nama_bidang as bidang, 
+                                    program.nama_program as program,
+                                    users.username as pengusul, 
+                                    volume,
+                                    satuan.nama_satuan as satuan,
+                                    tanggal
+                                FROM 
+                                    usulan 
+                                JOIN 
+                                    bidang 
+                                ON 
+                                    usulan.bidang_id = bidang.bidang_id 
+                                JOIN 
+                                    program 
+                                ON 
+                                    usulan.program_id = program.program_id
+                                JOIN
+                                    users
+                                ON
+                                    users.user_id = usulan.user_id
+                                JOIN
+                                    satuan
+                                ON
+                                    satuan.satuan_id = usulan.satuan_id
+                                WHERE 
+                                    status_penetapan = 'Masuk'");
                             $no = 1;
                             while ($data = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= ucfirst($data['judul']); ?></td>
-                                    <td><?= ucfirst($data['judul']); ?></td>
-                                    <td><?= ucfirst($data['judul']); ?></td>
-                                    <td><?= ucfirst($data['judul']); ?></td>
+                                    <td><?= ucfirst($data['bidang']); ?></td>
+                                    <td><?= ucfirst($data['program']); ?></td>
+                                    <td><?= $data['volume']; ?></td>
+                                    <td><?= $data['satuan']; ?></td>
+                                    <td><?= $data['tanggal']; ?></td>
+                                    <td><?= ucfirst($data['pengusul']); ?></td>
                                     <td>
-                                        <a data-type="terima"
-                                            data-id="<?= $data['usulan_id'] ?>"
-                                            data-user="<?= $_SESSION['user_id'] ?>"
-                                            class="btn btn-success btn-sm btn-verification">Terima</a>
+                                        <div class="d-flex flex-row gap-2 justify-content-end">
+                                            <a data-type="terima"
+                                                data-id="<?= $data['usulan_id'] ?>"
+                                                data-user="<?= $_SESSION['user_id'] ?>"
+                                                class="btn btn-success btn-sm btn-verification mr-2">Terima</a>
 
-                                        <a data-type="tolak"
-                                            data-id="<?= $data['usulan_id'] ?>"
-                                            data-user="<?= $_SESSION['user_id'] ?>"
-                                            class="btn btn-danger btn-sm btn-verification">Tolak</a>
-
+                                            <a data-type="tolak"
+                                                data-id="<?= $data['usulan_id'] ?>"
+                                                data-user="<?= $_SESSION['user_id'] ?>"
+                                                class="btn btn-danger btn-sm btn-verification">Tolak</a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php } ?>

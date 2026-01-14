@@ -88,23 +88,41 @@
                         <th>Program</th>
                         <th>Volume</th>
                         <th>Satuan</th>
-                        <th>Status Usulan</th>
+                        <th>Tanggal</th>
+                        <th>Pengusul</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    // Base query
-                    $query = "SELECT 
-                        usulan.*, 
-                        bidang.nama_bidang, 
-                        program.nama_program, 
-                        satuan.nama_satuan 
-                    FROM usulan 
-                    JOIN bidang ON usulan.bidang_id = bidang.bidang_id 
-                    JOIN program ON usulan.program_id = program.program_id 
-                    JOIN satuan ON usulan.usulan_id = satuan.satuan_id
-                    WHERE status_penetapan = 'Masuk'";
-
+                    $query = mysqli_query($con, "SELECT 
+                                    usulan.usulan_id, 
+                                    usulan.judul as judul, 
+                                    bidang.nama_bidang as bidang, 
+                                    program.nama_program as program,
+                                    users.username as pengusul, 
+                                    volume,
+                                    satuan.nama_satuan as satuan,
+                                    tanggal 
+                                FROM 
+                                    usulan 
+                                JOIN 
+                                    bidang 
+                                ON 
+                                    usulan.bidang_id = bidang.bidang_id 
+                                JOIN 
+                                    program 
+                                ON 
+                                    usulan.program_id = program.program_id
+                                JOIN
+                                    users
+                                ON
+                                    users.user_id = usulan.user_id
+                                JOIN
+                                    satuan
+                                ON
+                                    satuan.satuan_id = usulan.satuan_id
+                                WHERE 
+                                    status_penetapan = 'Masuk'");
                     // Add filters
                     if (!empty($_GET['tahun'])) {
                         $tahun = intval($_GET['tahun']);
@@ -118,18 +136,18 @@
                         $periode = intval($_GET['periode']);
                         $query .= " AND MONTH(tanggal) = $periode";
                     }
-
-                    $result = mysqli_query($con, $query);
                     $no = 1;
-                    while ($data = mysqli_fetch_array($result)) {
+                    while ($data = mysqli_fetch_array($query)) {
                     ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= htmlspecialchars(ucfirst($data['judul'])); ?></td>
-                            <td><?= htmlspecialchars(ucfirst($data['nama_bidang'])); ?></td>
-                            <td><?= htmlspecialchars(ucfirst($data['nama_program'])); ?></td>
-                            <td><?= htmlspecialchars(ucfirst($data['volume'])); ?></td>
-                            <td><?= $data['status_penetapan']; ?></td>
+                            <td><?= ucfirst($data['judul']); ?></td>
+                            <td><?= ucfirst($data['bidang']); ?></td>
+                            <td><?= ucfirst($data['program']); ?></td>
+                            <td><?= $data['volume']; ?></td>
+                            <td><?= $data['satuan']; ?></td>
+                            <td><?= $data['tanggal']; ?></td>
+                            <td><?= ucfirst($data['pengusul']); ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>

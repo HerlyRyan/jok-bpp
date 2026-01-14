@@ -8,30 +8,34 @@ $periode = isset($_GET['periode']) ? intval($_GET['periode']) : '';
 
 // Base query
 $query = "SELECT 
-        usulan.*, 
-        bidang.nama_bidang, 
-        program.nama_program, 
-        satuan.nama_satuan 
-    FROM usulan 
-    JOIN bidang ON usulan.bidang_id = bidang.bidang_id 
-    JOIN program ON usulan.program_id = program.program_id 
-    JOIN satuan ON usulan.usulan_id = satuan.satuan_id
-    WHERE status_penetapan = 'Masuk'";
+            usulan.usulan_id, 
+            usulan.judul, 
+            bidang.nama_bidang, 
+            program.nama_program,
+            users.username, 
+            usulan.volume,
+            satuan.nama_satuan as satuan,
+            usulan.tanggal 
+        FROM usulan 
+        JOIN bidang ON usulan.bidang_id = bidang.bidang_id 
+        JOIN program ON usulan.program_id = program.program_id
+        JOIN users ON users.user_id = usulan.user_id
+        JOIN satuan ON satuan.satuan_id = usulan.satuan_id
+        WHERE status_penetapan = 'Masuk'";
 
 // Filter tambahan
 if (!empty($tahun)) {
-    $query .= " AND tahun = $tahun";
+    $query .= " AND usulan.tahun = " . intval($tahun);
 }
 if (!empty($bidang)) {
-    $query .= " AND bidang.bidang_id = $bidang";
+    $query .= " AND bidang.bidang_id = " . intval($bidang);
 }
 if (!empty($periode)) {
-    $query .= " AND MONTH(tanggal) = $periode";
+    $query .= " AND MONTH(usulan.tanggal) = " . intval($periode);
 }
 
 $result = mysqli_query($con, $query);
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -79,16 +83,12 @@ $result = mysqli_query($con, $query);
             border-collapse: collapse;
             width: 100%;
             margin-bottom: 30px;
-        }
-
-        table,
-        th,
-        td {
             border: 1px solid black;
         }
 
         th,
         td {
+            border: 1px solid black;
             padding: 6px;
             text-align: center;
         }
@@ -106,7 +106,6 @@ $result = mysqli_query($con, $query);
 </head>
 
 <body onload="window.print()">
-
     <div class="header">
         <div class="logo">
             <img src="../../assets/img/logo-bapperida-pulang-pisau.jpg" alt="Logo Bapperida">
@@ -130,7 +129,8 @@ $result = mysqli_query($con, $query);
                 <th>Program</th>
                 <th>Volume</th>
                 <th>Satuan</th>
-                <th>Status Usulan</th>
+                <th>Tanggal</th>
+                <th>Pengusul</th>
             </tr>
         </thead>
         <tbody>
@@ -139,29 +139,30 @@ $result = mysqli_query($con, $query);
             if (mysqli_num_rows($result) > 0) {
                 while ($data = mysqli_fetch_array($result)) {
                     echo "<tr>
-                            <td>{$no}</td>
-                            <td>" . htmlspecialchars(ucfirst($data['judul'])) . "</td>
-                            <td>" . htmlspecialchars(ucfirst($data['nama_bidang'])) . "</td>
-                            <td>" . htmlspecialchars(ucfirst($data['nama_program'])) . "</td>
-                            <td>" . htmlspecialchars(ucfirst($data['volume'])) . "</td>
-                            <td>{$data['status_penetapan']}</td>
-                          </tr>";
+                        <td>{$no}</td>
+                        <td>" . htmlspecialchars(ucfirst($data['judul'])) . "</td>
+                        <td>" . htmlspecialchars(ucfirst($data['nama_bidang'])) . "</td>
+                        <td>" . htmlspecialchars(ucfirst($data['nama_program'])) . "</td>
+                        <td>" . htmlspecialchars($data['volume']) . "</td>
+                        <td>" . $data['satuan'] . "</td>
+                        <td>" . $data['tanggal'] . "</td>
+                        <td>" . htmlspecialchars($data['username']) . "</td>
+                    </tr>";
                     $no++;
                 }
             } else {
-                echo "<tr><td colspan='7'>Tidak ada data yang ditemukan</td></tr>";
+                echo "<tr><td colspan='6'>Tidak ada data yang ditemukan</td></tr>";
             }
             ?>
         </tbody>
     </table>
 
     <div class="ttd">
-        Pulang Pisau, <?php echo date('d F Y'); ?> <br>
-        Kepala Badan <br><br><br><br>
+        Pulang Pisau, <?php echo date('d F Y'); ?><br>
+        Kepala Badan<br><br><br><br>
         <b><u>NAMA KEPALA BADAN</u></b><br>
         NIP. ......................
     </div>
-
 </body>
 
 </html>
