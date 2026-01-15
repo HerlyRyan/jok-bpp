@@ -15,8 +15,7 @@ $query = "SELECT
 FROM rencana_pembangunan rp 
 JOIN usulan u  ON rp.usulan_id  = u.usulan_id 
 JOIN bidang b  ON u.bidang_id   = b.bidang_id 
-JOIN program p  ON u.program_id  = p.program_id 
-WHERE status_akhir = 'Ditetapkan'";
+JOIN program p  ON u.program_id  = p.program_id";
 
 // Add filters
 if (!empty($_GET['tahun'])) {

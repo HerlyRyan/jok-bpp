@@ -158,10 +158,9 @@ $result = mysqli_query($con, $query);
     </table>
 
     <div class="ttd">
-        Pulang Pisau, <?php echo date('d F Y'); ?><br>
-        Kepala Badan<br><br><br><br>
-        <b><u>NAMA KEPALA BADAN</u></b><br>
-        NIP. ......................
+        Pulang Pisau, ...... Juni 2025 <br>
+        Kepala Dinas Bappeda <br><br><br><br>
+        (__________________)
     </div>
 </body>
 
